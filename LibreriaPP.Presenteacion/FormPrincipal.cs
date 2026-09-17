@@ -33,5 +33,33 @@ namespace Presentacion
                 MessageBox.Show("error: " + ex.Message);
             }
         }
+
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            // abrir form ventas
+            FormVentas formVentas = new FormVentas();
+            formVentas.Show();
+        }
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            // abrir form stock
+            FormStock formStock = new FormStock();
+            formStock.Show();
+        }
+
+        private void btnCompras_Click(object sender, EventArgs e)
+        {
+            // abrir form compras
+            FormCompras formCompras = new FormCompras();
+            formCompras.Show();
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            //abrir form clientes
+            FormClientes formClientes = new FormClientes();
+            formClientes.Show();
+        }
     }
 }

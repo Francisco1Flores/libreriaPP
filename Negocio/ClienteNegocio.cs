@@ -12,7 +12,8 @@ namespace Negocio
     {
         public void AgregarCliente(Cliente cliente)
         {
-            ClienteDatos.AgregarCliente(cliente);
+            ClienteDatos clienteDatos = new ClienteDatos();
+            clienteDatos.AgregarCliente(cliente);
         }
     }
 }
