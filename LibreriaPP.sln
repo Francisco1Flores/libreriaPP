@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37516.0 d17.14
+VisualStudioVersion = 17.14.37516.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenteacion", "LibreriaPP.Presenteacion\Presenteacion.csproj", "{C1BD7CA5-36B7-4E2B-BF13-EEEF51B5B8C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion", "LibreriaPP.Presenteacion\Presentacion.csproj", "{C1BD7CA5-36B7-4E2B-BF13-EEEF51B5B8C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{02DF109D-8FBE-4430-9BAD-F2FCF09E1507}"
 EndProject

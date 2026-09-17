@@ -1,4 +1,4 @@
-﻿namespace Presenteacion
+﻿namespace Presentacion
 {
     partial class FormPrincipal
     {
@@ -33,11 +33,12 @@
             // 
             // button1
             // 
-            button1.Location = new Point(370, 214);
+            button1.Cursor = Cursors.Hand;
+            button1.Location = new Point(290, 216);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(179, 29);
             button1.TabIndex = 0;
-            button1.Text = "button1";
+            button1.Text = "probar conexion";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 

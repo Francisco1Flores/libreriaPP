@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Datos;
 using MySqlConnector;
 
-namespace Presenteacion
+namespace Presentacion
 {
     public partial class FormPrincipal : Form
     {
@@ -27,7 +27,8 @@ namespace Presenteacion
                 conexion.Open();
                 MessageBox.Show("conexion exitosa");
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("error: " + ex.Message);
             }
