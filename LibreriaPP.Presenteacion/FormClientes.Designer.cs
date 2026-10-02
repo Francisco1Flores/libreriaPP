@@ -28,60 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pnlPrincipal = new Panel();
-            dgvClientes = new DataGridView();
-            btnNuevoCliente = new Button();
-            pnlPrincipal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
+            label1 = new Label();
+            txtBuscarCliente = new TextBox();
+            btnBuscarCliente = new Button();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // pnlPrincipal
+            // label1
             // 
-            pnlPrincipal.BackColor = SystemColors.ControlDark;
-            pnlPrincipal.Controls.Add(btnNuevoCliente);
-            pnlPrincipal.Controls.Add(dgvClientes);
-            pnlPrincipal.Dock = DockStyle.Fill;
-            pnlPrincipal.Location = new Point(0, 0);
-            pnlPrincipal.Name = "pnlPrincipal";
-            pnlPrincipal.Size = new Size(800, 450);
-            pnlPrincipal.TabIndex = 0;
+            label1.AutoSize = true;
+            label1.Font = new Font("Verdana", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(67, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(523, 34);
+            label1.TabIndex = 0;
+            label1.Text = "ADMINISTRACIÓN DE CLIENTES";
             // 
-            // dgvClientes
+            // txtBuscarCliente
             // 
-            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Location = new Point(113, 104);
-            dgvClientes.Name = "dgvClientes";
-            dgvClientes.RowHeadersWidth = 51;
-            dgvClientes.Size = new Size(567, 188);
-            dgvClientes.TabIndex = 0;
+            txtBuscarCliente.Location = new Point(128, 116);
+            txtBuscarCliente.Name = "txtBuscarCliente";
+            txtBuscarCliente.Size = new Size(125, 27);
+            txtBuscarCliente.TabIndex = 1;
             // 
-            // btnNuevoCliente
+            // btnBuscarCliente
             // 
-            btnNuevoCliente.Location = new Point(503, 51);
-            btnNuevoCliente.Name = "btnNuevoCliente";
-            btnNuevoCliente.Size = new Size(164, 29);
-            btnNuevoCliente.TabIndex = 1;
-            btnNuevoCliente.Text = "Nuevo Cliente";
-            btnNuevoCliente.UseVisualStyleBackColor = true;
-            btnNuevoCliente.Click += btnNuevoCliente_Click;
+            btnBuscarCliente.Location = new Point(283, 114);
+            btnBuscarCliente.Name = "btnBuscarCliente";
+            btnBuscarCliente.Size = new Size(94, 29);
+            btnBuscarCliente.TabIndex = 2;
+            btnBuscarCliente.Text = "Buscar";
+            btnBuscarCliente.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(128, 174);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(300, 188);
+            dataGridView1.TabIndex = 3;
             // 
             // FormClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(pnlPrincipal);
+            Controls.Add(dataGridView1);
+            Controls.Add(btnBuscarCliente);
+            Controls.Add(txtBuscarCliente);
+            Controls.Add(label1);
             Name = "FormClientes";
             Text = "Clientes";
-            pnlPrincipal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Panel pnlPrincipal;
-        private DataGridView dgvClientes;
-        private Button btnNuevoCliente;
+        private Label label1;
+        private TextBox txtBuscarCliente;
+        private Button btnBuscarCliente;
+        private DataGridView dataGridView1;
     }
 }
