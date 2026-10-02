@@ -15,5 +15,15 @@ namespace Datos
         {
             return new MySqlConnection(cadenaConexion);
         }
+
+        public static int EjecutarQuery(string sql)
+        {
+            MySqlConnection conexion = ObtenerConexion();
+            conexion.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conexion);
+            int resultado = cmd.ExecuteNonQuery();
+            conexion.Close();
+            return resultado;
+        }
     }
 }

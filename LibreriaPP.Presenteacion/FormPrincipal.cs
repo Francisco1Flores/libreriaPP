@@ -14,6 +14,7 @@ namespace Presentacion
 {
     public partial class FormPrincipal : Form
     {
+        private Panel panel;
         public FormPrincipal()
         {
             InitializeComponent();
@@ -59,7 +60,7 @@ namespace Presentacion
         {
             //abrir form clientes
             FormClientes formClientes = new FormClientes();
-            formClientes.Show();
+            formClientes.Show();            
         }
     }
 }
