@@ -30,16 +30,17 @@
         {
             label1 = new Label();
             txtBuscarCliente = new TextBox();
-            btnBuscarCliente = new Button();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dgvClientes = new DataGridView();
+            label2 = new Label();
+            btnNuevoCliente = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Verdana", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(67, 25);
+            label1.Font = new Font("Verdana", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.Location = new Point(67, 24);
             label1.Name = "label1";
             label1.Size = new Size(523, 34);
             label1.TabIndex = 0;
@@ -47,42 +48,58 @@
             // 
             // txtBuscarCliente
             // 
-            txtBuscarCliente.Location = new Point(128, 116);
+            txtBuscarCliente.Location = new Point(80, 136);
             txtBuscarCliente.Name = "txtBuscarCliente";
-            txtBuscarCliente.Size = new Size(125, 27);
+            txtBuscarCliente.Size = new Size(307, 27);
             txtBuscarCliente.TabIndex = 1;
+            txtBuscarCliente.TextChanged += txtBuscarCliente_TextChanged;
             // 
-            // btnBuscarCliente
+            // dgvClientes
             // 
-            btnBuscarCliente.Location = new Point(283, 114);
-            btnBuscarCliente.Name = "btnBuscarCliente";
-            btnBuscarCliente.Size = new Size(94, 29);
-            btnBuscarCliente.TabIndex = 2;
-            btnBuscarCliente.Text = "Buscar";
-            btnBuscarCliente.UseVisualStyleBackColor = true;
+            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClientes.Location = new Point(80, 174);
+            dgvClientes.Name = "dgvClientes";
+            dgvClientes.ReadOnly = true;
+            dgvClientes.RowHeadersWidth = 51;
+            dgvClientes.Size = new Size(1244, 444);
+            dgvClientes.TabIndex = 3;
             // 
-            // dataGridView1
+            // label2
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(128, 174);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(300, 188);
-            dataGridView1.TabIndex = 3;
+            label2.AutoSize = true;
+            label2.Location = new Point(80, 113);
+            label2.Name = "label2";
+            label2.Size = new Size(212, 20);
+            label2.TabIndex = 4;
+            label2.Text = "Buscar cliente (Nombre o DNI)";
+            // 
+            // btnNuevoCliente
+            // 
+            btnNuevoCliente.Cursor = Cursors.Hand;
+            btnNuevoCliente.Location = new Point(1187, 134);
+            btnNuevoCliente.Name = "btnNuevoCliente";
+            btnNuevoCliente.Size = new Size(137, 29);
+            btnNuevoCliente.TabIndex = 5;
+            btnNuevoCliente.Text = "Nuevo";
+            btnNuevoCliente.UseVisualStyleBackColor = true;
+            btnNuevoCliente.Click += btnNuevoCliente_Click_1;
             // 
             // FormClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
-            Controls.Add(btnBuscarCliente);
+            BackColor = SystemColors.ActiveBorder;
+            ClientSize = new Size(1386, 761);
+            Controls.Add(btnNuevoCliente);
+            Controls.Add(label2);
+            Controls.Add(dgvClientes);
             Controls.Add(txtBuscarCliente);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FormClientes";
             Text = "Clientes";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -91,7 +108,8 @@
 
         private Label label1;
         private TextBox txtBuscarCliente;
-        private Button btnBuscarCliente;
-        private DataGridView dataGridView1;
+        private DataGridView dgvClientes;
+        private Label label2;
+        private Button btnNuevoCliente;
     }
 }

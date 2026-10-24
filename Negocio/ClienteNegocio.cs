@@ -5,6 +5,7 @@ using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,6 +35,133 @@ namespace Negocio
         {
             ClienteDatos clienteDatos = new ClienteDatos();
             clienteDatos.EliminarCliente(id);            
+        }
+
+        public bool NombreValido(string texto)
+        {
+            bool Resultado = true;
+            texto = texto.Trim();
+
+            if (string.IsNullOrEmpty(texto) || string.IsNullOrWhiteSpace(texto))
+            {
+                Resultado = false;
+                return Resultado;
+            }            
+
+            foreach(char c in texto)
+            {
+                if (c != ' ' && !EsLetra(c))
+                {
+                    Resultado = false;
+                    break;
+                }                                
+            }            
+            return Resultado;
+        }
+
+        private bool EsLetra(char c)
+        {
+            return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+        }
+
+        public bool DniValido(string texto)
+        {
+            texto = texto.Trim();
+            if (string.IsNullOrEmpty(texto) || string.IsNullOrWhiteSpace(texto))
+            {
+                return false;
+            }
+            if (texto.Length < 7 ||  texto.Length > 11)
+            {
+                return false;
+            }
+            return int.TryParse(texto, out int dni);
+        }
+
+        public bool DniExiste(int dni)
+        {
+            ClienteDatos clienteDatos = new ClienteDatos();
+            if (clienteDatos.ObtenerCliente(dni) != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool TelValido(string texto)
+        {
+            if (string.IsNullOrEmpty(texto) ||
+                string.IsNullOrWhiteSpace(texto))
+            {
+                return true;
+            }
+
+            bool Resultado = true;
+            if (texto.Length < 7)
+            {
+                Resultado = false;
+                return Resultado;
+            }
+
+            foreach(char c in texto)
+            {
+                if (!(EsDigito(c) || c == '+'))
+                {
+                    Resultado = false;
+                    break;
+                }
+            }
+            return Resultado;
+        }
+
+        private bool EsDigito(char c)
+        {
+            return c >= '0' && c <= '9';
+        }
+
+        public bool EmailValido(string texto)
+        {
+            if (string.IsNullOrEmpty(texto) ||
+                string.IsNullOrWhiteSpace(texto))
+            {
+                return true;
+            }
+            texto = texto.Trim();
+            bool Resultado = true;
+            if(texto.Contains(' '))
+            {
+                Resultado = false;
+            }
+            Resultado = MailAddress.TryCreate(texto, out _);
+            return Resultado;
+        }
+
+        public bool DireccionValido(string texto)
+        {            
+            if (string.IsNullOrEmpty(texto) ||
+                string.IsNullOrWhiteSpace(texto))
+            {
+                return true;
+            }
+            bool Resultado = true;
+            texto = texto.Trim();
+            int NumeroDeEspacios = 0;
+            foreach(char c in texto)
+            {
+                ++NumeroDeEspacios;                
+            }
+            if (NumeroDeEspacios > 1)
+            {
+                Resultado = false;
+                return Resultado;
+            }
+            string[] Partes = texto.Split(' ');
+            if (!int.TryParse(Partes[1],out _))
+            {
+                Resultado = false;
+                return Resultado;
+            }
+            return Resultado;
         }
     }
 }
