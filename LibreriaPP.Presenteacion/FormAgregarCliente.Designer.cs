@@ -53,7 +53,7 @@
             // btnAccion
             // 
             btnAccion.Cursor = Cursors.Hand;
-            btnAccion.Location = new Point(172, 348);
+            btnAccion.Location = new Point(304, 364);
             btnAccion.Name = "btnAccion";
             btnAccion.Size = new Size(94, 29);
             btnAccion.TabIndex = 0;
@@ -64,7 +64,7 @@
             // btnCancelar
             // 
             btnCancelar.Cursor = Cursors.Hand;
-            btnCancelar.Location = new Point(318, 348);
+            btnCancelar.Location = new Point(450, 364);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 29);
             btnCancelar.TabIndex = 1;
@@ -74,35 +74,35 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(208, 37);
+            txtNombre.Location = new Point(340, 53);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(204, 27);
             txtNombre.TabIndex = 2;
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(208, 90);
+            txtDni.Location = new Point(340, 106);
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(204, 27);
             txtDni.TabIndex = 3;
             // 
             // txtTel
             // 
-            txtTel.Location = new Point(208, 143);
+            txtTel.Location = new Point(340, 159);
             txtTel.Name = "txtTel";
             txtTel.Size = new Size(204, 27);
             txtTel.TabIndex = 4;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(208, 196);
+            txtEmail.Location = new Point(340, 212);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(204, 27);
             txtEmail.TabIndex = 5;
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(208, 249);
+            txtDireccion.Location = new Point(340, 265);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(204, 27);
             txtDireccion.TabIndex = 6;
@@ -110,7 +110,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(138, 44);
+            label1.Location = new Point(270, 60);
             label1.Name = "label1";
             label1.Size = new Size(64, 20);
             label1.TabIndex = 7;
@@ -119,7 +119,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(162, 97);
+            label2.Location = new Point(294, 113);
             label2.Name = "label2";
             label2.Size = new Size(35, 20);
             label2.TabIndex = 8;
@@ -128,7 +128,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(130, 146);
+            label3.Location = new Point(262, 162);
             label3.Name = "label3";
             label3.Size = new Size(67, 20);
             label3.TabIndex = 9;
@@ -137,7 +137,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(151, 199);
+            label4.Location = new Point(283, 215);
             label4.Name = "label4";
             label4.Size = new Size(46, 20);
             label4.TabIndex = 10;
@@ -146,7 +146,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(130, 256);
+            label5.Location = new Point(262, 272);
             label5.Name = "label5";
             label5.Size = new Size(72, 20);
             label5.TabIndex = 11;
@@ -156,7 +156,7 @@
             // 
             lblErrorNombre.AutoSize = true;
             lblErrorNombre.ForeColor = Color.Red;
-            lblErrorNombre.Location = new Point(208, 67);
+            lblErrorNombre.Location = new Point(340, 83);
             lblErrorNombre.Name = "lblErrorNombre";
             lblErrorNombre.Size = new Size(50, 20);
             lblErrorNombre.TabIndex = 12;
@@ -166,7 +166,7 @@
             // 
             lblErrorDni.AutoSize = true;
             lblErrorDni.ForeColor = Color.Red;
-            lblErrorDni.Location = new Point(208, 120);
+            lblErrorDni.Location = new Point(340, 136);
             lblErrorDni.Name = "lblErrorDni";
             lblErrorDni.Size = new Size(50, 20);
             lblErrorDni.TabIndex = 13;
@@ -176,7 +176,7 @@
             // 
             lblErrorTel.AutoSize = true;
             lblErrorTel.ForeColor = Color.Red;
-            lblErrorTel.Location = new Point(208, 173);
+            lblErrorTel.Location = new Point(340, 189);
             lblErrorTel.Name = "lblErrorTel";
             lblErrorTel.Size = new Size(50, 20);
             lblErrorTel.TabIndex = 14;
@@ -186,7 +186,7 @@
             // 
             lblErrorEmail.AutoSize = true;
             lblErrorEmail.ForeColor = Color.Red;
-            lblErrorEmail.Location = new Point(208, 226);
+            lblErrorEmail.Location = new Point(340, 242);
             lblErrorEmail.Name = "lblErrorEmail";
             lblErrorEmail.Size = new Size(50, 20);
             lblErrorEmail.TabIndex = 15;
@@ -196,7 +196,7 @@
             // 
             lblErrorDireccion.AutoSize = true;
             lblErrorDireccion.ForeColor = Color.Red;
-            lblErrorDireccion.Location = new Point(208, 279);
+            lblErrorDireccion.Location = new Point(340, 295);
             lblErrorDireccion.Name = "lblErrorDireccion";
             lblErrorDireccion.Size = new Size(58, 20);
             lblErrorDireccion.TabIndex = 16;
@@ -207,7 +207,7 @@
             lblNombreObligatorio.AutoSize = true;
             lblNombreObligatorio.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblNombreObligatorio.ForeColor = Color.Red;
-            lblNombreObligatorio.Location = new Point(418, 36);
+            lblNombreObligatorio.Location = new Point(550, 52);
             lblNombreObligatorio.Name = "lblNombreObligatorio";
             lblNombreObligatorio.Size = new Size(21, 28);
             lblNombreObligatorio.TabIndex = 17;
@@ -218,7 +218,7 @@
             lblDniObligatorio.AutoSize = true;
             lblDniObligatorio.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblDniObligatorio.ForeColor = Color.Red;
-            lblDniObligatorio.Location = new Point(418, 90);
+            lblDniObligatorio.Location = new Point(550, 106);
             lblDniObligatorio.Name = "lblDniObligatorio";
             lblDniObligatorio.Size = new Size(21, 28);
             lblDniObligatorio.TabIndex = 18;
@@ -228,7 +228,7 @@
             // 
             lblCamposObligatorios.AutoSize = true;
             lblCamposObligatorios.ForeColor = Color.Red;
-            lblCamposObligatorios.Location = new Point(220, 313);
+            lblCamposObligatorios.Location = new Point(352, 329);
             lblCamposObligatorios.Name = "lblCamposObligatorios";
             lblCamposObligatorios.Size = new Size(158, 20);
             lblCamposObligatorios.TabIndex = 19;
@@ -238,7 +238,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(620, 450);
+            ClientSize = new Size(863, 450);
             Controls.Add(lblCamposObligatorios);
             Controls.Add(lblDniObligatorio);
             Controls.Add(lblNombreObligatorio);

@@ -137,7 +137,7 @@ namespace Presentacion
             Resultado = ValidarCampo(() => clienteNegocio.EmailValido(txtEmail.Text),
                                      lblErrorEmail, "El email debe tener un formato válido (Ejemplo: usuario@dominio.com).") ? Resultado : false;
             Resultado = ValidarCampo(() => clienteNegocio.DireccionValido(txtDireccion.Text),
-                                     lblErrorDireccion, "La dirección tiene un formato inválido.(Ejemplo: Calle 1234") ? Resultado : false;
+                                     lblErrorDireccion, "La dirección tiene un formato inválido.(Ejemplo: Calle 1234)") ? Resultado : false;
 
             return Resultado;
         }

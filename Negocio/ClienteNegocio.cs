@@ -1,13 +1,6 @@
 ﻿using Datos;
 using Entidades;
-using MySqlConnector;
-using MySqlX.XDevAPI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio
 {
@@ -143,25 +136,27 @@ namespace Negocio
             {
                 return true;
             }
-            bool Resultado = true;
+            
             texto = texto.Trim();
             int NumeroDeEspacios = 0;
             foreach(char c in texto)
             {
-                ++NumeroDeEspacios;                
+                if (c == ' ')
+                {
+                    ++NumeroDeEspacios;
+                }                
             }
-            if (NumeroDeEspacios > 1)
-            {
-                Resultado = false;
-                return Resultado;
+            if (NumeroDeEspacios != 1)
+            {                
+                return false;
             }
+
             string[] Partes = texto.Split(' ');
             if (!int.TryParse(Partes[1],out _))
-            {
-                Resultado = false;
-                return Resultado;
+            {                
+                return false;
             }
-            return Resultado;
+            return true;
         }
     }
 }
