@@ -67,7 +67,7 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(214, 450);
+            panel1.Size = new Size(214, 522);
             panel1.TabIndex = 1;
             // 
             // pictureBox1
@@ -147,18 +147,18 @@
             panelContenedor.Dock = DockStyle.Fill;
             panelContenedor.Location = new Point(214, 0);
             panelContenedor.Name = "panelContenedor";
-            panelContenedor.Size = new Size(586, 450);
+            panelContenedor.Size = new Size(860, 522);
             panelContenedor.TabIndex = 2;
             // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1074, 522);
             Controls.Add(panelContenedor);
             Controls.Add(panel1);
             Name = "FormPrincipal";
-            Text = "FormPrincipal";
+            Text = "FormPrincipal";            
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

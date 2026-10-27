@@ -14,6 +14,7 @@ namespace Presentacion
 {
     public partial class FormPrincipal : Form
     {
+        private Panel panel;
         public FormPrincipal()
         {
             InitializeComponent();

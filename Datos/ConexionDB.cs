@@ -9,11 +9,21 @@ namespace Datos
 {
     public class ConexionDB
     {        
-        public static string cadenaConexion = "Server=localhost;Port=3307;Database=libreriadb;UserID=root;Password=Mf020731;";
+        private static string cadenaConexion = "Server=localhost;Port=3307;Database=libreriadb;UserID=root;Password=root;";
 
         public static MySqlConnection ObtenerConexion()
         {
             return new MySqlConnection(cadenaConexion);
+        }
+
+        public static int EjecutarQuery(string sql)
+        {
+            MySqlConnection conexion = ObtenerConexion();
+            conexion.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conexion);
+            int resultado = cmd.ExecuteNonQuery();
+            conexion.Close();
+            return resultado;
         }
     }
 }
