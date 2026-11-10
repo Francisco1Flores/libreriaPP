@@ -31,19 +31,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             button1 = new Button();
             panel1 = new Panel();
-            pictureBox1 = new PictureBox();
             btnClientes = new Button();
             btnCompras = new Button();
             btnStock = new Button();
             btnVentas = new Button();
             lblLogo = new Label();
+            pictureBox1 = new PictureBox();
             panelContenedor = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panelContenedor.SuspendLayout();
             SuspendLayout();
             // 
             // button1
             // 
+            button1.BackColor = Color.Orchid;
             button1.Cursor = Cursors.Hand;
             button1.FlatAppearance.BorderColor = Color.FromArgb(33, 43, 54);
             button1.Location = new Point(12, 409);
@@ -51,13 +53,12 @@
             button1.Size = new Size(179, 29);
             button1.TabIndex = 0;
             button1.Text = "probar conexion";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(33, 43, 54);
-            panel1.Controls.Add(pictureBox1);
+            panel1.BackColor = Color.DarkSlateBlue;
             panel1.Controls.Add(btnClientes);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(btnCompras);
@@ -70,24 +71,16 @@
             panel1.Size = new Size(214, 450);
             panel1.TabIndex = 1;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(214, 89);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
-            // 
             // btnClientes
             // 
             btnClientes.Cursor = Cursors.Hand;
             btnClientes.Dock = DockStyle.Top;
-            btnClientes.FlatAppearance.BorderColor = Color.FromArgb(33, 43, 54);
-            btnClientes.Location = new Point(0, 209);
+            btnClientes.FlatAppearance.BorderColor = Color.Fuchsia;
+            btnClientes.FlatStyle = FlatStyle.Popup;
+            btnClientes.ForeColor = SystemColors.ButtonHighlight;
+            btnClientes.Location = new Point(0, 303);
             btnClientes.Name = "btnClientes";
-            btnClientes.Size = new Size(214, 40);
+            btnClientes.Size = new Size(214, 70);
             btnClientes.TabIndex = 3;
             btnClientes.Text = "Clientes";
             btnClientes.UseVisualStyleBackColor = false;
@@ -97,9 +90,12 @@
             // 
             btnCompras.Cursor = Cursors.Hand;
             btnCompras.Dock = DockStyle.Top;
-            btnCompras.Location = new Point(0, 169);
+            btnCompras.FlatAppearance.BorderColor = Color.FromArgb(255, 255, 192);
+            btnCompras.FlatStyle = FlatStyle.Popup;
+            btnCompras.ForeColor = SystemColors.ButtonHighlight;
+            btnCompras.Location = new Point(0, 237);
             btnCompras.Name = "btnCompras";
-            btnCompras.Size = new Size(214, 40);
+            btnCompras.Size = new Size(214, 66);
             btnCompras.TabIndex = 2;
             btnCompras.Text = "Compras";
             btnCompras.UseVisualStyleBackColor = false;
@@ -109,9 +105,11 @@
             // 
             btnStock.Cursor = Cursors.Hand;
             btnStock.Dock = DockStyle.Top;
-            btnStock.Location = new Point(0, 129);
+            btnStock.FlatStyle = FlatStyle.Popup;
+            btnStock.ForeColor = SystemColors.ButtonHighlight;
+            btnStock.Location = new Point(0, 160);
             btnStock.Name = "btnStock";
-            btnStock.Size = new Size(214, 40);
+            btnStock.Size = new Size(214, 77);
             btnStock.TabIndex = 1;
             btnStock.Text = "Stock";
             btnStock.UseVisualStyleBackColor = false;
@@ -119,20 +117,23 @@
             // 
             // btnVentas
             // 
+            btnVentas.BackColor = Color.DarkSlateBlue;
             btnVentas.Cursor = Cursors.Hand;
             btnVentas.Dock = DockStyle.Top;
             btnVentas.FlatAppearance.MouseOverBackColor = Color.FromArgb(46, 204, 113);
+            btnVentas.FlatStyle = FlatStyle.Popup;
+            btnVentas.ForeColor = SystemColors.ButtonHighlight;
             btnVentas.Location = new Point(0, 89);
             btnVentas.Name = "btnVentas";
-            btnVentas.Size = new Size(214, 40);
+            btnVentas.Size = new Size(214, 71);
             btnVentas.TabIndex = 0;
             btnVentas.Text = "Ventas";
-            btnVentas.UseVisualStyleBackColor = false;
+            btnVentas.UseVisualStyleBackColor = true;
             btnVentas.Click += btnVentas_Click;
             // 
             // lblLogo
             // 
-            lblLogo.BackColor = Color.Gold;
+            lblLogo.BackColor = Color.DarkSlateBlue;
             lblLogo.Dock = DockStyle.Top;
             lblLogo.Location = new Point(0, 0);
             lblLogo.Name = "lblLogo";
@@ -141,9 +142,21 @@
             lblLogo.Text = "Logo";
             lblLogo.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(116, 70);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(345, 253);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
             // panelContenedor
             // 
-            panelContenedor.BackColor = Color.FromArgb(244, 246, 248);
+            panelContenedor.BackColor = Color.Gainsboro;
+            panelContenedor.Controls.Add(pictureBox1);
             panelContenedor.Dock = DockStyle.Fill;
             panelContenedor.Location = new Point(214, 0);
             panelContenedor.Name = "panelContenedor";
@@ -161,6 +174,7 @@
             Text = "FormPrincipal";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panelContenedor.ResumeLayout(false);
             ResumeLayout(false);
         }
 
