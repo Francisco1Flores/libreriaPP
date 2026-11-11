@@ -62,7 +62,7 @@
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
             dgvClientes.RowHeadersWidth = 51;
-            dgvClientes.Size = new Size(1244, 444);
+            dgvClientes.Size = new Size(1244, 560);
             dgvClientes.TabIndex = 3;
             // 
             // label2

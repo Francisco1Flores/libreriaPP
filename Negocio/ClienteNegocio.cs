@@ -54,7 +54,7 @@ namespace Negocio
 
         private bool EsLetra(char c)
         {
-            return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+            return char.IsLetter(c);            
         }
 
         public bool DniValido(string texto)
@@ -89,27 +89,24 @@ namespace Negocio
                 return true;
             }
 
-            bool Resultado = true;
-            if (texto.Length < 7)
+            if (texto.Length < 7 || texto.Length > 15)
             {
-                Resultado = false;
-                return Resultado;
+                return false;
             }
 
             foreach(char c in texto)
             {
                 if (!(EsDigito(c) || c == '+'))
                 {
-                    Resultado = false;
-                    break;
+                    return false;
                 }
             }
-            return Resultado;
+            return true;
         }
 
         private bool EsDigito(char c)
         {
-            return c >= '0' && c <= '9';
+            return char.IsDigit(c);
         }
 
         public bool EmailValido(string texto)
@@ -136,27 +133,24 @@ namespace Negocio
             {
                 return true;
             }
-            
+
             texto = texto.Trim();
-            int NumeroDeEspacios = 0;
-            foreach(char c in texto)
+            bool contieneLetra = false;
+            bool contieneNumero = false;
+            bool contieneEspacio = false;            
+
+            foreach (char c in texto)
             {
-                if (c == ' ')
+                if (!(c == ' ' || EsDigito(c) || EsLetra(c)))
                 {
-                    ++NumeroDeEspacios;
-                }                
-            }
-            if (NumeroDeEspacios != 1)
-            {                
-                return false;
+                    return false;
+                }
+                if (c == ' ') contieneEspacio = true;
+                if (EsDigito(c)) contieneNumero = true;
+                if (EsLetra(c)) contieneLetra = true;
             }
 
-            string[] Partes = texto.Split(' ');
-            if (!int.TryParse(Partes[1],out _))
-            {                
-                return false;
-            }
-            return true;
+            return contieneEspacio && contieneNumero && contieneLetra;
         }
     }
 }

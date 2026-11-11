@@ -7,6 +7,7 @@ namespace Presentacion
     {
         private FormClientes formPadre;
         private Cliente cliente;
+        private string strSinDatos = "--SIN DATOS--";
         public FormAgregarCliente(string tipo, Cliente cliente, FormClientes formPadre)
         {
             InitializeComponent();
@@ -28,9 +29,9 @@ namespace Presentacion
                 txtNombre.Text = cliente.nombre;
                 txtDni.Text = cliente.dni.ToString();
                 txtDni.Enabled = false;
-                txtEmail.Text = cliente.email;
-                txtTel.Text = cliente.tel.ToString();
-                txtDireccion.Text = cliente.direccion;
+                txtEmail.Text = cliente.email.Equals(strSinDatos) ? "" : cliente.email;
+                txtTel.Text = cliente.tel.Equals(strSinDatos) ? "" : cliente.tel;
+                txtDireccion.Text = cliente.direccion.Equals(strSinDatos) ? "" : cliente.direccion;
 
                 this.cliente = cliente;
             }
@@ -65,6 +66,8 @@ namespace Presentacion
             if (btnAccion.Text.Equals("Agregar"))
             {
                 clienteNegocio.AgregarCliente(cliente);
+                formPadre.ActualizarClientes();
+                this.Close();
             }
             else if (btnAccion.Text.Equals("Modificar"))
             {
@@ -76,11 +79,10 @@ namespace Presentacion
                 if (respuesta == DialogResult.Yes)
                 {
                     clienteNegocio.ModificarCliente(cliente);
-                }                
+                    formPadre.ActualizarClientes();
+                    this.Close();
+                }
             }
-            formPadre.ActualizarClientes();
-
-            this.Close();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -105,7 +107,6 @@ namespace Presentacion
                 lblNombreObligatorio.Visible = false;
                 lblCamposObligatorios.Visible = false;                
             }
-                
 
             if (accion.Equals("Agregar"))
             {
@@ -129,15 +130,14 @@ namespace Presentacion
                     lblDniObligatorio.Visible = false;
                     lblCamposObligatorios.Visible = false;
                 }
-                
             }
-                
+
             Resultado = ValidarCampo(() => clienteNegocio.TelValido(txtTel.Text),
-                                     lblErrorTel, "El teléfono contiene caracteres o tiene una longitud inválida.") ? Resultado : false;
+                                     lblErrorTel, "El número de telefono debe contener entre 7 y 15 digitos.") ? Resultado : false;
             Resultado = ValidarCampo(() => clienteNegocio.EmailValido(txtEmail.Text),
                                      lblErrorEmail, "El email debe tener un formato válido (Ejemplo: usuario@dominio.com).") ? Resultado : false;
             Resultado = ValidarCampo(() => clienteNegocio.DireccionValido(txtDireccion.Text),
-                                     lblErrorDireccion, "La dirección tiene un formato inválido.(Ejemplo: Calle 1234)") ? Resultado : false;
+                                     lblErrorDireccion, "La dirección solo puede contener números, letras o espacios.(Ejemplo: Calle 1234)") ? Resultado : false;
 
             return Resultado;
         }
@@ -146,6 +146,7 @@ namespace Presentacion
         {
             bool valido = validacion();
             ErrorLabel.Text = valido ? "" : Mensaje;
+            ErrorLabel.Location = new Point(this.Width / 2 - ErrorLabel.Width / 2, ErrorLabel.Location.Y);
             return valido;
         }
     }

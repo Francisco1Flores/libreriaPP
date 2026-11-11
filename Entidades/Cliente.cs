@@ -32,7 +32,7 @@ namespace Entidades
             this.email     = cliente.email;
             this.direccion = cliente.direccion;
         }
-        public Cliente() {}
+        public Cliente() {}       
     }
 
 }
