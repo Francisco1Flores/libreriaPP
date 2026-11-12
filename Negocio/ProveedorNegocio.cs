@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Collections.Generic;
 using Datos;
 using Entidades;
 
@@ -7,43 +6,58 @@ namespace Negocio
 {
     public class ProveedorNegocio
     {
-        private ProveedorDatos datos = new ProveedorDatos();
+        // Instanciamos la capa de Datos para comunicarnos con SQL Server
+        private ProveedorDatos objProveedorDatos = new ProveedorDatos();
 
-        public DataTable ListarProveedores()
+        // Método que llama el formulario para obtener la lista de proveedores
+        public List<Proveedor> Listar()
         {
-            return datos.Listar();
+            return objProveedorDatos.ListarProveedores();
         }
-
-        public DataTable BuscarProveedores(string filtro)
+        public int Registrar(Proveedor obj, out string mensaje)
         {
-            return datos.Buscar(filtro);
+            mensaje = string.Empty;
+
+            if (string.IsNullOrEmpty(obj.RazonSocial))
+            {
+                mensaje = "Debe ingresar la Razón Social del proveedor.";
+                return 0;
+            }
+            if (string.IsNullOrEmpty(obj.Cuit))
+            {
+                mensaje = "Debe ingresar el CUIT del proveedor.";
+                return 0;
+            }
+
+            return objProveedorDatos.Registrar(obj, out mensaje);
         }
-
-        public void Registrar(Proveedor p)
+        public bool Modificar(Proveedor obj, out string mensaje)
         {
-            if (string.IsNullOrWhiteSpace(p.Nombre))
-                throw new Exception("El nombre o razón social del proveedor es obligatorio.");
+            mensaje = string.Empty;
 
-            datos.Insertar(p);
+            if (obj.IdProveedor == 0)
+            {
+                mensaje = "Debe seleccionar un proveedor de la lista para modificar.";
+                return false;
+            }
+            if (string.IsNullOrEmpty(obj.RazonSocial))
+            {
+                mensaje = "Debe ingresar la Razón Social del proveedor.";
+                return false;
+            }
+            if (string.IsNullOrEmpty(obj.Cuit))
+            {
+                mensaje = "Debe ingresar el CUIT del proveedor.";
+                return false;
+            }
+
+            return objProveedorDatos.Modificar(obj, out mensaje);
         }
-
-        public void Modificar(Proveedor p)
+        public bool BajaLogica(int idProveedor, out string mensaje)
         {
-            if (p.Id <= 0)
-                throw new Exception("Seleccione un proveedor válido para modificar.");
-
-            if (string.IsNullOrWhiteSpace(p.Nombre))
-                throw new Exception("El nombre del proveedor no puede quedar vacío.");
-
-            datos.Modificar(p);
-        }
-
-        public void Eliminar(int id)
-        {
-            if (id <= 0)
-                throw new Exception("Seleccione un proveedor para eliminar.");
-
-            datos.Eliminar(id);
+            // Aquí puedes agregar reglas de negocio adicionales si lo necesitas en el futuro 
+            // (por ejemplo, verificar si tiene compras pendientes antes de darlo de baja).
+            return new ProveedorDatos().BajaLogica(idProveedor, out mensaje);
         }
     }
 }

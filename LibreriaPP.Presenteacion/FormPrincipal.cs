@@ -62,7 +62,7 @@ namespace Presentacion
 
         private void btnCompras_Click(object sender, EventArgs e)
         {
-            AbrirFormularioEnPanel(new FormCompras());
+            AbrirFormularioEnPanel(new FormRegistrarCompra());
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
