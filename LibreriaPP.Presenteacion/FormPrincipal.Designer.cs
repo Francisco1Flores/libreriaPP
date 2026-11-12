@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             button1 = new Button();
             panel1 = new Panel();
+            btnProveedores = new Button();
             btnClientes = new Button();
             btnCompras = new Button();
             btnStock = new Button();
@@ -48,7 +49,7 @@
             button1.BackColor = Color.Orchid;
             button1.Cursor = Cursors.Hand;
             button1.FlatAppearance.BorderColor = Color.FromArgb(33, 43, 54);
-            button1.Location = new Point(12, 409);
+            button1.Location = new Point(12, 470);
             button1.Name = "button1";
             button1.Size = new Size(179, 29);
             button1.TabIndex = 0;
@@ -59,6 +60,7 @@
             // panel1
             // 
             panel1.BackColor = Color.DarkSlateBlue;
+            panel1.Controls.Add(btnProveedores);
             panel1.Controls.Add(btnClientes);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(btnCompras);
@@ -70,6 +72,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(214, 522);
             panel1.TabIndex = 1;
+            // 
+            // btnProveedores
+            // 
+            btnProveedores.Cursor = Cursors.Hand;
+            btnProveedores.Dock = DockStyle.Top;
+            btnProveedores.FlatAppearance.BorderColor = Color.Fuchsia;
+            btnProveedores.FlatStyle = FlatStyle.Popup;
+            btnProveedores.ForeColor = SystemColors.ButtonHighlight;
+            btnProveedores.Location = new Point(0, 373);
+            btnProveedores.Name = "btnProveedores";
+            btnProveedores.Size = new Size(214, 70);
+            btnProveedores.TabIndex = 5;
+            btnProveedores.Text = "Proveedores";
+            btnProveedores.UseVisualStyleBackColor = false;
+            btnProveedores.Click += btnProveedores_Click;
             // 
             // btnClientes
             // 
@@ -171,7 +188,8 @@
             Controls.Add(panelContenedor);
             Controls.Add(panel1);
             Name = "FormPrincipal";
-            Text = "FormPrincipal";            
+            Text = "FormPrincipal";
+            WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelContenedor.ResumeLayout(false);
@@ -189,5 +207,6 @@
         private Panel panelContenedor;
         private PictureBox pictureBox1;
         private Label lblLogo;
+        private Button btnProveedores;
     }
 }

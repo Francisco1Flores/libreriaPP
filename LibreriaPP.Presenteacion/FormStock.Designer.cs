@@ -28,10 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            lblTitulo = new Label();
             txtBuscarProductos = new TextBox();
             dgvStock = new DataGridView();
             gbProducto = new GroupBox();
+            cmbProveedor = new ComboBox();
+            cmbRubro = new ComboBox();
+            lblProveedor = new Label();
+            lblRubro = new Label();
             btnEliminar = new Button();
             btnLimpiar = new Button();
             btnModificar = new Button();
@@ -46,21 +50,21 @@
             lblNombre = new Label();
             txtCodigo = new TextBox();
             lblCodigo = new Label();
-            label2 = new Label();
+            lblBuscar = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvStock).BeginInit();
             gbProducto.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // lblTitulo
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Verdana", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.OrangeRed;
-            label1.Location = new Point(12, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(570, 34);
-            label1.TabIndex = 0;
-            label1.Text = "CONTROL DE STOCK Y PRODUCTOS";
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Verdana", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = Color.OrangeRed;
+            lblTitulo.Location = new Point(12, 19);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(570, 34);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "CONTROL DE STOCK Y PRODUCTOS";
             // 
             // txtBuscarProductos
             // 
@@ -87,6 +91,10 @@
             // gbProducto
             // 
             gbProducto.BackColor = SystemColors.ButtonHighlight;
+            gbProducto.Controls.Add(cmbProveedor);
+            gbProducto.Controls.Add(cmbRubro);
+            gbProducto.Controls.Add(lblProveedor);
+            gbProducto.Controls.Add(lblRubro);
             gbProducto.Controls.Add(btnEliminar);
             gbProducto.Controls.Add(btnLimpiar);
             gbProducto.Controls.Add(btnModificar);
@@ -107,6 +115,42 @@
             gbProducto.TabIndex = 4;
             gbProducto.TabStop = false;
             gbProducto.Text = "REGISTRAR / EDITAR PRODUCTO";
+            // 
+            // cmbProveedor
+            // 
+            cmbProveedor.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbProveedor.FormattingEnabled = true;
+            cmbProveedor.Location = new Point(891, 120);
+            cmbProveedor.Name = "cmbProveedor";
+            cmbProveedor.Size = new Size(151, 28);
+            cmbProveedor.TabIndex = 17;
+            // 
+            // cmbRubro
+            // 
+            cmbRubro.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbRubro.FormattingEnabled = true;
+            cmbRubro.Location = new Point(853, 61);
+            cmbRubro.Name = "cmbRubro";
+            cmbRubro.Size = new Size(151, 28);
+            cmbRubro.TabIndex = 16;
+            // 
+            // lblProveedor
+            // 
+            lblProveedor.AutoSize = true;
+            lblProveedor.Location = new Point(760, 116);
+            lblProveedor.Name = "lblProveedor";
+            lblProveedor.Size = new Size(80, 20);
+            lblProveedor.TabIndex = 15;
+            lblProveedor.Text = "Proveedor:";
+            // 
+            // lblRubro
+            // 
+            lblRubro.AutoSize = true;
+            lblRubro.Location = new Point(752, 60);
+            lblRubro.Name = "lblRubro";
+            lblRubro.Size = new Size(52, 20);
+            lblRubro.TabIndex = 14;
+            lblRubro.Text = "Rubro:";
             // 
             // btnEliminar
             // 
@@ -238,14 +282,14 @@
             lblCodigo.TabIndex = 0;
             lblCodigo.Text = "Código de Barras:";
             // 
-            // label2
+            // lblBuscar
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(80, 85);
-            label2.Name = "label2";
-            label2.Size = new Size(117, 20);
-            label2.TabIndex = 5;
-            label2.Text = "Buscar producto";
+            lblBuscar.AutoSize = true;
+            lblBuscar.Location = new Point(80, 85);
+            lblBuscar.Name = "lblBuscar";
+            lblBuscar.Size = new Size(117, 20);
+            lblBuscar.TabIndex = 5;
+            lblBuscar.Text = "Buscar producto";
             // 
             // FormStock
             // 
@@ -253,11 +297,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(1751, 755);
-            Controls.Add(label2);
+            Controls.Add(lblBuscar);
             Controls.Add(gbProducto);
             Controls.Add(dgvStock);
             Controls.Add(txtBuscarProductos);
-            Controls.Add(label1);
+            Controls.Add(lblTitulo);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormStock";
             Text = "Stock";
@@ -271,11 +315,11 @@
 
         #endregion
 
-        private Label label1;
+        private Label lblTitulo;
         private TextBox txtBuscarProductos;
         private DataGridView dgvStock;
         private GroupBox gbProducto;
-        private Label label2;
+        private Label lblBuscar;
         private TextBox txtCodigo;
         private Label lblCodigo;
         private TextBox txtPrecioVenta;
@@ -290,5 +334,9 @@
         private Button btnModificar;
         private Button btnGuardar;
         private Button btnEliminar;
+        private ComboBox cmbProveedor;
+        private ComboBox cmbRubro;
+        private Label lblProveedor;
+        private Label lblRubro;
     }
 }

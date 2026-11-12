@@ -15,7 +15,60 @@ namespace Presentacion
         public FormStock()
         {
             InitializeComponent();
+
+
+            // Paleta de colores Dark Mode
+            Color fondoOscuro = Color.FromArgb(30, 30, 30);
+            Color tarjetaGris = Color.FromArgb(45, 45, 48);
+            Color campoTexto = Color.FromArgb(37, 37, 38);
+            Color textoClaro = Color.FromArgb(240, 240, 240);
+            Color bordeGris = Color.FromArgb(60, 60, 60);
+
+            this.BackColor = fondoOscuro;
+
+            // Título y buscador
+            lblTitulo.ForeColor = Color.FromArgb(187, 134, 252);
+            lblBuscar.ForeColor = textoClaro;
+
+            txtBuscarProductos.BackColor = campoTexto;
+            txtBuscarProductos.ForeColor = textoClaro;
+            txtBuscarProductos.BorderStyle = BorderStyle.FixedSingle;
+
+            // Recuadro de datos (GroupBox)
+            gbProducto.BackColor = tarjetaGris;
+            gbProducto.ForeColor = textoClaro;
+
+            foreach (Control c in gbProducto.Controls)
+            {
+                if (c is Label lbl) lbl.ForeColor = textoClaro;
+                else if (c is TextBox txt) { txt.BackColor = campoTexto; txt.ForeColor = textoClaro; txt.BorderStyle = BorderStyle.FixedSingle; }
+                else if (c is ComboBox cmb) { cmb.BackColor = campoTexto; cmb.ForeColor = textoClaro; cmb.FlatStyle = FlatStyle.Flat; }
+                else if (c is NumericUpDown nud) { nud.BackColor = campoTexto; nud.ForeColor = textoClaro; }
+                else if (c is Button btn) { btn.FlatStyle = FlatStyle.Flat; btn.BackColor = Color.FromArgb(55, 55, 60); btn.ForeColor = textoClaro; }
+            }
+
+            // Botones de acción
+            btnGuardar.FlatStyle = FlatStyle.Flat; btnGuardar.BackColor = Color.FromArgb(65, 80, 140); btnGuardar.ForeColor = Color.White;
+            btnModificar.FlatStyle = FlatStyle.Flat; btnModificar.BackColor = Color.FromArgb(55, 55, 60); btnModificar.ForeColor = textoClaro;
+            btnLimpiar.FlatStyle = FlatStyle.Flat; btnLimpiar.BackColor = Color.FromArgb(55, 55, 60); btnLimpiar.ForeColor = textoClaro;
+            btnEliminar.FlatStyle = FlatStyle.Flat; btnEliminar.BackColor = Color.FromArgb(120, 40, 40); btnEliminar.ForeColor = Color.White;
+
+            // Grilla
+            dgvStock.BackgroundColor = tarjetaGris;
+            dgvStock.BorderStyle = BorderStyle.None;
+            dgvStock.GridColor = bordeGris;
+            dgvStock.EnableHeadersVisualStyles = false;
+
+            dgvStock.DefaultCellStyle.BackColor = tarjetaGris;
+            dgvStock.DefaultCellStyle.ForeColor = textoClaro;
+            dgvStock.DefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 70, 130);
+            dgvStock.DefaultCellStyle.SelectionForeColor = Color.White;
+
+            dgvStock.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(35, 35, 38);
+            dgvStock.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
+
+   
 
         private void FormStock_Load_1(object sender, EventArgs e)
         {
@@ -112,7 +165,7 @@ namespace Presentacion
             try
             {
                 Producto prod = new Producto()
-                {
+                { 
                     Id = idProductoSeleccionado,
                     Nombre = txtNombre.Text.Trim(),
                     CodigoBarra = txtCodigo.Text.Trim(),
