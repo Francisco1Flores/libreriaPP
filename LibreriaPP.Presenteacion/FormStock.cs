@@ -16,6 +16,15 @@ namespace Presentacion
         {
             InitializeComponent();
 
+            // Estilo Dark Mode para las celdas y encabezados de la grilla
+            dgvStock.DefaultCellStyle.BackColor = Color.FromArgb(45, 45, 48);
+            dgvStock.DefaultCellStyle.ForeColor = Color.FromArgb(240, 240, 240);
+            dgvStock.DefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 70, 130);
+            dgvStock.DefaultCellStyle.SelectionForeColor = Color.White;
+
+            dgvStock.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(35, 35, 38);
+            dgvStock.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvStock.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
 
             // Paleta de colores Dark Mode
             Color fondoOscuro = Color.FromArgb(30, 30, 30);

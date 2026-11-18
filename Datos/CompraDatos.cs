@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using MySql.Data.MySqlClient;
 using Entidades;
@@ -19,14 +16,12 @@ namespace Datos
             using (MySqlConnection conexion = new MySqlConnection(ConexionDB.cadenaConexion))
             {
                 conexion.Open();
-                // Iniciamos una transacción de MySQL para asegurar la integridad de los datos
                 MySqlTransaction transaccion = conexion.BeginTransaction();
 
                 try
                 {
                     // 1. Insertar la Cabecera de la Compra
                     string queryCompra = "INSERT INTO Compra (fecha, total, idProveedor, idFormaPago) VALUES (NOW(), @total, @idProveedor, @idFormaPago);";
-
                     long idCompraGenerado = 0;
 
                     using (MySqlCommand cmdCompra = new MySqlCommand(queryCompra, conexion, transaccion))
@@ -37,8 +32,6 @@ namespace Datos
                         cmdCompra.CommandType = CommandType.Text;
 
                         cmdCompra.ExecuteNonQuery();
-
-                        // Obtenemos automáticamente el ID con el que se creó esta compra
                         idCompraGenerado = cmdCompra.LastInsertedId;
                     }
 
@@ -57,15 +50,24 @@ namespace Datos
 
                             cmdDetalle.ExecuteNonQuery();
                         }
+
+                        // OPCIONAL: Descomentar cuando confirmemos el nombre de la columna de stock en la tabla Producto
+                        /*
+                        string queryStock = "UPDATE Producto SET stock = stock + @cantidad WHERE id = @idProducto;";
+                        using (MySqlCommand cmdStock = new MySqlCommand(queryStock, conexion, transaccion))
+                        {
+                            cmdStock.Parameters.AddWithValue("@cantidad", item.Cantidad);
+                            cmdStock.Parameters.AddWithValue("@idProducto", item.IdProducto);
+                            cmdStock.ExecuteNonQuery();
+                        }
+                        */
                     }
 
-                    // Si todo salió bien, confirmamos la transacción en la base de datos
                     transaccion.Commit();
                     respuesta = true;
                 }
                 catch (Exception ex)
                 {
-                    // Si algo falla, deshacemos todo para no corromper datos
                     transaccion.Rollback();
                     respuesta = false;
                     mensaje = "Error al registrar la compra: " + ex.Message;

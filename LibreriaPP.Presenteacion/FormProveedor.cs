@@ -1,14 +1,10 @@
 ﻿using Entidades;
+using Negocio;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Negocio;
 
 namespace Presentacion
 {
@@ -20,93 +16,92 @@ namespace Presentacion
         public FormProveedor()
         {
             InitializeComponent();
-        
 
-    // Paleta de colores Dark Mode
-    Color fondoOscuro = Color.FromArgb(30, 30, 30);
-    Color tarjetaGris = Color.FromArgb(45, 45, 48);
-    Color campoTexto = Color.FromArgb(37, 37, 38);
-    Color textoClaro = Color.FromArgb(240, 240, 240);
-    Color bordeGris = Color.FromArgb(60, 60, 60);
+            // Paleta de colores Dark Mode
+            Color fondoOscuro = Color.FromArgb(30, 30, 30);
+            Color tarjetaGris = Color.FromArgb(45, 45, 48);
+            Color campoTexto = Color.FromArgb(37, 37, 38);
+            Color textoClaro = Color.FromArgb(240, 240, 240);
+            Color bordeGris = Color.FromArgb(60, 60, 60);
 
-    // Fondo del formulario
-    this.BackColor = fondoOscuro;
+            // Fondo del formulario
+            this.BackColor = fondoOscuro;
 
-    // Título y búsqueda
-    lblTitulo.ForeColor = Color.FromArgb(187, 134, 252); // Violeta suave
-    lblBuscar.ForeColor = textoClaro;
+            // Título y búsqueda
+            lblTitulo.ForeColor = Color.FromArgb(187, 134, 252); // Violeta suave
+            lblBuscar.ForeColor = textoClaro;
 
-    txtBuscarProveedor.BackColor = campoTexto;
-    txtBuscarProveedor.ForeColor = textoClaro;
-    txtBuscarProveedor.BorderStyle = BorderStyle.FixedSingle;
+            txtBuscarProveedor.BackColor = campoTexto;
+            txtBuscarProveedor.ForeColor = textoClaro;
+            txtBuscarProveedor.BorderStyle = BorderStyle.FixedSingle;
 
-    // GroupBox y sus controles internos (Labels, TextBoxes y Botones)
-    gbProveedor.BackColor = tarjetaGris;
-    gbProveedor.ForeColor = textoClaro;
+            // GroupBox y sus controles internos (Labels, TextBoxes y Botones)
+            gbProveedor.BackColor = tarjetaGris;
+            gbProveedor.ForeColor = textoClaro;
 
-    foreach (Control c in gbProveedor.Controls)
-    {
-        if (c is Label lbl)
-        {
-            lbl.ForeColor = textoClaro;
-        }
-        else if (c is TextBox txt)
-        {
-            txt.BackColor = campoTexto;
-            txt.ForeColor = textoClaro;
-            txt.BorderStyle = BorderStyle.FixedSingle;
-        }
-        else if (c is Button btn)
-        {
-            btn.FlatStyle = FlatStyle.Flat;
-            btn.FlatAppearance.BorderSize = 1;
-            btn.FlatAppearance.BorderColor = bordeGris;
-            btn.BackColor = Color.FromArgb(55, 55, 60);
-            btn.ForeColor = textoClaro;
-        }
-    }
+            foreach (Control c in gbProveedor.Controls)
+            {
+                if (c is Label lbl)
+                {
+                    lbl.ForeColor = textoClaro;
+                }
+                else if (c is TextBox txt)
+                {
+                    txt.BackColor = campoTexto;
+                    txt.ForeColor = textoClaro;
+                    txt.BorderStyle = BorderStyle.FixedSingle;
+                }
+                else if (c is Button btn)
+                {
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 1;
+                    btn.FlatAppearance.BorderColor = bordeGris;
+                    btn.BackColor = Color.FromArgb(55, 55, 60);
+                    btn.ForeColor = textoClaro;
+                }
+            }
 
-    // Estilo de los botones que estén afuera del GroupBox
-    btnGuardar.FlatStyle = FlatStyle.Flat;
-    btnGuardar.FlatAppearance.BorderSize = 1;
-    btnGuardar.FlatAppearance.BorderColor = bordeGris;
-    btnGuardar.BackColor = Color.FromArgb(65, 80, 140); // Azul tenue para destacar
-    btnGuardar.ForeColor = Color.White;
+            // Estilo de los botones que estén afuera del GroupBox
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.FlatAppearance.BorderSize = 1;
+            btnGuardar.FlatAppearance.BorderColor = bordeGris;
+            btnGuardar.BackColor = Color.FromArgb(65, 80, 140); // Azul tenue para destacar
+            btnGuardar.ForeColor = Color.White;
 
-    btnModificar.FlatStyle = FlatStyle.Flat;
-    btnModificar.FlatAppearance.BorderSize = 1;
-    btnModificar.FlatAppearance.BorderColor = bordeGris;
-    btnModificar.BackColor = Color.FromArgb(55, 55, 60);
-    btnModificar.ForeColor = textoClaro;
+            btnModificar.FlatStyle = FlatStyle.Flat;
+            btnModificar.FlatAppearance.BorderSize = 1;
+            btnModificar.FlatAppearance.BorderColor = bordeGris;
+            btnModificar.BackColor = Color.FromArgb(55, 55, 60);
+            btnModificar.ForeColor = textoClaro;
 
-    btnLimpiar.FlatStyle = FlatStyle.Flat;
-    btnLimpiar.FlatAppearance.BorderSize = 1;
-    btnLimpiar.FlatAppearance.BorderColor = bordeGris;
-    btnLimpiar.BackColor = Color.FromArgb(55, 55, 60);
-    btnLimpiar.ForeColor = textoClaro;
+            btnLimpiar.FlatStyle = FlatStyle.Flat;
+            btnLimpiar.FlatAppearance.BorderSize = 1;
+            btnLimpiar.FlatAppearance.BorderColor = bordeGris;
+            btnLimpiar.BackColor = Color.FromArgb(55, 55, 60);
+            btnLimpiar.ForeColor = textoClaro;
 
-    btnEliminar.FlatStyle = FlatStyle.Flat;
-    btnEliminar.FlatAppearance.BorderSize = 1;
-    btnEliminar.FlatAppearance.BorderColor = bordeGris;
-    btnEliminar.BackColor = Color.FromArgb(120, 40, 40); // Rojo apagado
-    btnEliminar.ForeColor = Color.White;
+            btnEliminar.FlatStyle = FlatStyle.Flat;
+            btnEliminar.FlatAppearance.BorderSize = 1;
+            btnEliminar.FlatAppearance.BorderColor = bordeGris;
+            btnEliminar.BackColor = Color.FromArgb(120, 40, 40); // Rojo apagado
+            btnEliminar.ForeColor = Color.White;
 
-    // Estilo de la grilla (DataGridView)
-    dgvProveedores.BackgroundColor = tarjetaGris;
-    dgvProveedores.BorderStyle = BorderStyle.None;
-    dgvProveedores.GridColor = bordeGris;
-    dgvProveedores.EnableHeadersVisualStyles = false;
+            // Estilo de la grilla (DataGridView)
+            dgvProveedores.BackgroundColor = tarjetaGris;
+            dgvProveedores.BorderStyle = BorderStyle.None;
+            dgvProveedores.GridColor = bordeGris;
+            dgvProveedores.EnableHeadersVisualStyles = false;
 
-    // Filas de datos
-    dgvProveedores.DefaultCellStyle.BackColor = tarjetaGris;
-    dgvProveedores.DefaultCellStyle.ForeColor = textoClaro;
-    dgvProveedores.DefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 70, 130);
-    dgvProveedores.DefaultCellStyle.SelectionForeColor = Color.White;
+            // Filas de datos
+            dgvProveedores.DefaultCellStyle.BackColor = tarjetaGris;
+            dgvProveedores.DefaultCellStyle.ForeColor = textoClaro;
+            dgvProveedores.DefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 70, 130);
+            dgvProveedores.DefaultCellStyle.SelectionForeColor = Color.White;
 
-    // Encabezado de columnas
-    dgvProveedores.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(35, 35, 38);
-    dgvProveedores.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-    dgvProveedores.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            // Encabezado de columnas
+            dgvProveedores.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(35, 35, 38);
+            dgvProveedores.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvProveedores.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
         }
 
         private void FormProveedor_Load(object sender, EventArgs e)
@@ -114,11 +109,23 @@ namespace Presentacion
             CargarTablaProveedores();
         }
 
-        private void CargarTablaProveedores()
+        private void CargarTablaProveedores(string filtro = "")
         {
             try
             {
-                dgvProveedores.DataSource = proveedorNegocio.ListarProveedores();
+                List<Proveedor> lista = proveedorNegocio.Listar();
+
+                if (!string.IsNullOrWhiteSpace(filtro))
+                {
+                    string f = filtro.Trim().ToLower();
+                    lista = lista.Where(p =>
+                        (p.RazonSocial != null && p.RazonSocial.ToLower().Contains(f)) ||
+                        (p.Cuit != null && p.Cuit.ToLower().Contains(f))
+                    ).ToList();
+                }
+
+                dgvProveedores.DataSource = null;
+                dgvProveedores.DataSource = lista;
             }
             catch (Exception ex)
             {
@@ -128,27 +135,18 @@ namespace Presentacion
 
         private void txtBuscarProveedor_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                dgvProveedores.DataSource = proveedorNegocio.BuscarProveedores(txtBuscarProveedor.Text.Trim());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            CargarTablaProveedores(txtBuscarProveedor.Text);
         }
 
         private void dgvProveedores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0 && dgvProveedores.Rows[e.RowIndex].DataBoundItem is Proveedor p)
             {
-                DataGridViewRow fila = dgvProveedores.Rows[e.RowIndex];
-
-                idProveedorSeleccionado = Convert.ToInt32(fila.Cells["ID"].Value);
-                txtNombre.Text = fila.Cells["Nombre"].Value?.ToString();
-                txtCuil.Text = fila.Cells["CUIL"].Value?.ToString();
-                txtTelefono.Text = fila.Cells["Teléfono"].Value?.ToString();
-                txtEmail.Text = fila.Cells["Email"].Value?.ToString();
+                idProveedorSeleccionado = p.IdProveedor;
+                txtNombre.Text = p.RazonSocial;
+                txtCuil.Text = p.Cuit;
+                txtTelefono.Text = p.Telefono;
+                txtEmail.Text = p.Email;
             }
         }
 
@@ -173,17 +171,24 @@ namespace Presentacion
             {
                 Proveedor prov = new Proveedor()
                 {
-                    Nombre = txtNombre.Text.Trim(),
-                    Cuil = txtCuil.Text.Trim(),
-                    Tel = txtTelefono.Text.Trim(),
-                    Email = txtEmail.Text.Trim()
+                    RazonSocial = txtNombre.Text.Trim(),
+                    Cuit = txtCuil.Text.Trim(),
+                    Telefono = txtTelefono.Text.Trim(),
+                    Email = txtEmail.Text.Trim(),
+                    Estado = true
                 };
 
-                proveedorNegocio.Registrar(prov);
-
-                MessageBox.Show("¡Proveedor registrado con éxito!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarTablaProveedores();
-                LimpiarCampos();
+                string mensaje;
+                if (proveedorNegocio.Registrar(prov, out mensaje) > 0)
+                {
+                    MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarTablaProveedores();
+                    LimpiarCampos();
+                }
+                else
+                {
+                    MessageBox.Show(mensaje, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch (Exception ex)
             {
@@ -203,18 +208,25 @@ namespace Presentacion
 
                 Proveedor prov = new Proveedor()
                 {
-                    Id = idProveedorSeleccionado,
-                    Nombre = txtNombre.Text.Trim(),
-                    Cuil = txtCuil.Text.Trim(),
-                    Tel = txtTelefono.Text.Trim(),
-                    Email = txtEmail.Text.Trim()
+                    IdProveedor = idProveedorSeleccionado,
+                    RazonSocial = txtNombre.Text.Trim(),
+                    Cuit = txtCuil.Text.Trim(),
+                    Telefono = txtTelefono.Text.Trim(),
+                    Email = txtEmail.Text.Trim(),
+                    Estado = true
                 };
 
-                proveedorNegocio.Modificar(prov);
-
-                MessageBox.Show("¡Proveedor modificado con éxito!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarTablaProveedores();
-                LimpiarCampos();
+                string mensaje;
+                if (proveedorNegocio.Modificar(prov, out mensaje))
+                {
+                    MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarTablaProveedores();
+                    LimpiarCampos();
+                }
+                else
+                {
+                    MessageBox.Show(mensaje, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch (Exception ex)
             {
@@ -241,10 +253,17 @@ namespace Presentacion
             {
                 try
                 {
-                    proveedorNegocio.Eliminar(idProveedorSeleccionado);
-                    MessageBox.Show("Proveedor eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CargarTablaProveedores();
-                    LimpiarCampos();
+                    string mensaje;
+                    if (proveedorNegocio.BajaLogica(idProveedorSeleccionado, out mensaje))
+                    {
+                        MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarTablaProveedores();
+                        LimpiarCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 catch (Exception ex)
                 {
