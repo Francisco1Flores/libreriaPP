@@ -35,7 +35,7 @@ namespace Datos
                         idCompraGenerado = cmdCompra.LastInsertedId;
                     }
 
-                    // 2. Insertar cada Detalle de la Compra asociado al ID generado
+                    // 2. Insertar cada Detalle de la Compra y sumar la cantidad en la tabla Stock
                     foreach (DetalleCompra item in listaDetalle)
                     {
                         string queryDetalle = "INSERT INTO DetalleCompra (idCompra, idProducto, cantidad, subTotal) VALUES (@idCompra, @idProducto, @cantidad, @subTotal);";
@@ -51,16 +51,16 @@ namespace Datos
                             cmdDetalle.ExecuteNonQuery();
                         }
 
-                        // OPCIONAL: Descomentar cuando confirmemos el nombre de la columna de stock en la tabla Producto
-                        /*
-                        string queryStock = "UPDATE Producto SET stock = stock + @cantidad WHERE id = @idProducto;";
+                        string queryStock = "UPDATE Stock SET cantidad = cantidad + @cantidad WHERE idProducto = @idProducto;";
+
                         using (MySqlCommand cmdStock = new MySqlCommand(queryStock, conexion, transaccion))
                         {
                             cmdStock.Parameters.AddWithValue("@cantidad", item.Cantidad);
                             cmdStock.Parameters.AddWithValue("@idProducto", item.IdProducto);
+                            cmdStock.CommandType = CommandType.Text;
+
                             cmdStock.ExecuteNonQuery();
                         }
-                        */
                     }
 
                     transaccion.Commit();

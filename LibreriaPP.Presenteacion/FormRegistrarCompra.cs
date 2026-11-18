@@ -29,6 +29,7 @@ namespace Presentacion
             dgvDetalle.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(35, 35, 38);
             dgvDetalle.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvDetalle.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvDetalle.CellDoubleClick += dgvDetalle_CellDoubleClick;
         }
 
         private void FormRegistrarCompra_Load(object sender, EventArgs e)
@@ -64,17 +65,10 @@ namespace Presentacion
 
         private void CargarProductos()
         {
-            DataTable dtProductos = new DataTable();
-            dtProductos.Columns.Add("IdProducto", typeof(int));
-            dtProductos.Columns.Add("Nombre", typeof(string));
-
-            dtProductos.Rows.Add(1, "Cuaderno A4");
-            dtProductos.Rows.Add(2, "Lápiz Negro");
-            dtProductos.Rows.Add(3, "Impresora Térmica");
-
-            cmbProducto.DataSource = dtProductos;
-            cmbProducto.DisplayMember = "Nombre";
-            cmbProducto.ValueMember = "IdProducto";
+            // Traemos el DataTable real de Stock (columnas: "ID", "Producto", "Precio Lista ($)", etc.)
+            cmbProducto.DataSource = new Negocio.Negocio.ProductoNegocio().ObtenerStock();
+            cmbProducto.DisplayMember = "Producto";
+            cmbProducto.ValueMember = "ID";
             cmbProducto.SelectedIndex = -1;
         }
 
@@ -165,6 +159,27 @@ namespace Presentacion
 
         private void cmbProveedor_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+
+        private void dgvDetalle_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex >= listaDetalleTemporal.Count)
+                return;
+
+            string producto = listaDetalleTemporal[e.RowIndex].NombreProducto;
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Desea quitar '{producto}' del detalle de compra?",
+                "Quitar producto",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmacion == DialogResult.Yes)
+            {
+                listaDetalleTemporal.RemoveAt(e.RowIndex);
+                RefrescarGrillaDetalle();
+                ActualizarTotalVisual();
+            }
         }
     }
 }

@@ -63,6 +63,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Verdana", 16.2F, ((System.Drawing.FontStyle)(System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic)), System.Drawing.GraphicsUnit.Point, ((byte)0));
+            label1.ForeColor = System.Drawing.Color.FromArgb(187, 134, 252);
             label1.Location = new System.Drawing.Point(67, 24);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(523, 34);
@@ -71,6 +72,9 @@
             // 
             // txtBuscarCliente
             // 
+            txtBuscarCliente.BackColor = System.Drawing.Color.FromArgb(37, 37, 38);
+            txtBuscarCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            txtBuscarCliente.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             txtBuscarCliente.Location = new System.Drawing.Point(80, 136);
             txtBuscarCliente.Name = "txtBuscarCliente";
             txtBuscarCliente.Size = new System.Drawing.Size(307, 27);
@@ -82,7 +86,15 @@
             dgvClientes.AllowUserToAddRows = false;
             dgvClientes.AllowUserToDeleteRows = false;
             dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClientes.BackgroundColor = System.Drawing.Color.FromArgb(45, 45, 48);
+            dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClientes.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(45, 45, 48);
+            dgvClientes.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            dgvClientes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(90, 70, 130);
+            dgvClientes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            dgvClientes.EnableHeadersVisualStyles = false;
+            dgvClientes.GridColor = System.Drawing.Color.FromArgb(60, 60, 60);
             dgvClientes.Location = new System.Drawing.Point(80, 174);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
@@ -94,6 +106,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             label2.Location = new System.Drawing.Point(80, 113);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(212, 20);
@@ -102,17 +115,22 @@
             // 
             // btnNuevoCliente
             // 
+            btnNuevoCliente.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
             btnNuevoCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnNuevoCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnNuevoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnNuevoCliente.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             btnNuevoCliente.Location = new System.Drawing.Point(1187, 134);
             btnNuevoCliente.Name = "btnNuevoCliente";
             btnNuevoCliente.Size = new System.Drawing.Size(137, 29);
             btnNuevoCliente.TabIndex = 5;
             btnNuevoCliente.Text = "Nuevo";
-            btnNuevoCliente.UseVisualStyleBackColor = true;
+            btnNuevoCliente.UseVisualStyleBackColor = false;
             btnNuevoCliente.Click += btnNuevoCliente_Click_1;
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = System.Drawing.Color.FromArgb(45, 45, 48);
             groupBox1.Controls.Add(btnSeleccionar);
             groupBox1.Controls.Add(lblDniObligatorio);
             groupBox1.Controls.Add(lblNombreObligatorio);
@@ -134,6 +152,7 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label5);
+            groupBox1.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             groupBox1.Location = new System.Drawing.Point(77, 663);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new System.Drawing.Size(1247, 254);
@@ -143,17 +162,22 @@
             // 
             // btnSeleccionar
             // 
+            btnSeleccionar.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
             btnSeleccionar.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnSeleccionar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnSeleccionar.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             btnSeleccionar.Location = new System.Drawing.Point(486, 176);
             btnSeleccionar.Name = "btnSeleccionar";
             btnSeleccionar.Size = new System.Drawing.Size(145, 29);
             btnSeleccionar.TabIndex = 33;
             btnSeleccionar.Text = "Seleccionar";
-            btnSeleccionar.UseVisualStyleBackColor = true;
+            btnSeleccionar.UseVisualStyleBackColor = false;
             btnSeleccionar.Click += btnSeleccionar_Click;
             // 
             // lblDniObligatorio
             // 
+            lblDniObligatorio.ForeColor = System.Drawing.Color.FromArgb(187, 134, 252);
             lblDniObligatorio.Location = new System.Drawing.Point(820, 56);
             lblDniObligatorio.Name = "lblDniObligatorio";
             lblDniObligatorio.Size = new System.Drawing.Size(29, 23);
@@ -162,6 +186,7 @@
             // 
             // lblNombreObligatorio
             // 
+            lblNombreObligatorio.ForeColor = System.Drawing.Color.FromArgb(187, 134, 252);
             lblNombreObligatorio.Location = new System.Drawing.Point(496, 55);
             lblNombreObligatorio.Name = "lblNombreObligatorio";
             lblNombreObligatorio.Size = new System.Drawing.Size(29, 23);
@@ -170,6 +195,7 @@
             // 
             // lblCamposObligatorios
             // 
+            lblCamposObligatorios.ForeColor = System.Drawing.Color.FromArgb(187, 134, 252);
             lblCamposObligatorios.Location = new System.Drawing.Point(6, 23);
             lblCamposObligatorios.Name = "lblCamposObligatorios";
             lblCamposObligatorios.Size = new System.Drawing.Size(187, 23);
@@ -178,72 +204,99 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
             btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnCancelar.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             btnCancelar.Location = new System.Drawing.Point(638, 176);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new System.Drawing.Size(145, 29);
             btnCancelar.TabIndex = 29;
             btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
             // btnGuardarDatos
             // 
+            btnGuardarDatos.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
             btnGuardarDatos.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnGuardarDatos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnGuardarDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnGuardarDatos.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             btnGuardarDatos.Location = new System.Drawing.Point(487, 176);
             btnGuardarDatos.Name = "btnGuardarDatos";
             btnGuardarDatos.Size = new System.Drawing.Size(145, 29);
             btnGuardarDatos.TabIndex = 28;
             btnGuardarDatos.Text = "Guardar Datos";
-            btnGuardarDatos.UseVisualStyleBackColor = true;
+            btnGuardarDatos.UseVisualStyleBackColor = false;
             btnGuardarDatos.Click += btnGuardarDatos_Click;
             // 
             // btnNuevo
             // 
+            btnNuevo.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
             btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnNuevo.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             btnNuevo.Location = new System.Drawing.Point(335, 176);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new System.Drawing.Size(145, 29);
             btnNuevo.TabIndex = 26;
             btnNuevo.Text = "Nuevo";
-            btnNuevo.UseVisualStyleBackColor = true;
+            btnNuevo.UseVisualStyleBackColor = false;
             btnNuevo.Click += btnNuevo_Click;
             // 
             // btnEliminar
             // 
+            btnEliminar.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
             btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnEliminar.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             btnEliminar.Location = new System.Drawing.Point(638, 176);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new System.Drawing.Size(145, 29);
             btnEliminar.TabIndex = 25;
             btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += btnEliminar_Click;
             // 
             // btnAgregar
             // 
+            btnAgregar.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
             btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAgregar.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             btnAgregar.Location = new System.Drawing.Point(487, 176);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new System.Drawing.Size(145, 29);
             btnAgregar.TabIndex = 24;
             btnAgregar.Text = "Guardar Nuevo";
-            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
             // 
             // btnModificar
             // 
+            btnModificar.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
             btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnModificar.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             btnModificar.Location = new System.Drawing.Point(487, 176);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new System.Drawing.Size(145, 29);
             btnModificar.TabIndex = 23;
             btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.UseVisualStyleBackColor = false;
             btnModificar.Click += btnModificar_Click;
             // 
             // txtDireccion
             // 
+            txtDireccion.BackColor = System.Drawing.Color.FromArgb(37, 37, 38);
+            txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            txtDireccion.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             txtDireccion.Location = new System.Drawing.Point(581, 109);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new System.Drawing.Size(321, 27);
@@ -251,6 +304,9 @@
             // 
             // txtEmail
             // 
+            txtEmail.BackColor = System.Drawing.Color.FromArgb(37, 37, 38);
+            txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            txtEmail.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             txtEmail.Location = new System.Drawing.Point(184, 112);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new System.Drawing.Size(306, 27);
@@ -258,6 +314,9 @@
             // 
             // txtTel
             // 
+            txtTel.BackColor = System.Drawing.Color.FromArgb(37, 37, 38);
+            txtTel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            txtTel.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             txtTel.Location = new System.Drawing.Point(928, 55);
             txtTel.Name = "txtTel";
             txtTel.Size = new System.Drawing.Size(245, 27);
@@ -265,6 +324,9 @@
             // 
             // txtDni
             // 
+            txtDni.BackColor = System.Drawing.Color.FromArgb(37, 37, 38);
+            txtDni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            txtDni.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             txtDni.Location = new System.Drawing.Point(581, 55);
             txtDni.Name = "txtDni";
             txtDni.Size = new System.Drawing.Size(233, 27);
@@ -272,6 +334,9 @@
             // 
             // txtNombre
             // 
+            txtNombre.BackColor = System.Drawing.Color.FromArgb(37, 37, 38);
+            txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            txtNombre.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             txtNombre.Location = new System.Drawing.Point(184, 52);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new System.Drawing.Size(306, 27);
@@ -280,6 +345,7 @@
             // label8
             // 
             label8.AutoSize = true;
+            label8.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             label8.Location = new System.Drawing.Point(540, 58);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(35, 20);
@@ -289,6 +355,7 @@
             // label7
             // 
             label7.AutoSize = true;
+            label7.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             label7.Location = new System.Drawing.Point(505, 112);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(72, 20);
@@ -298,6 +365,7 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             label6.Location = new System.Drawing.Point(132, 116);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(46, 20);
@@ -307,6 +375,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             label4.Location = new System.Drawing.Point(855, 58);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(67, 20);
@@ -316,6 +385,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             label3.Location = new System.Drawing.Point(44, 55);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(134, 20);
@@ -325,6 +395,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             label5.Location = new System.Drawing.Point(44, 123);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(0, 20);
@@ -335,7 +406,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoScroll = true;
-            BackColor = System.Drawing.SystemColors.ActiveBorder;
+            BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
             ClientSize = new System.Drawing.Size(1386, 1047);
             Controls.Add(groupBox1);
             Controls.Add(btnNuevoCliente);
@@ -343,6 +414,7 @@
             Controls.Add(dgvClientes);
             Controls.Add(txtBuscarCliente);
             Controls.Add(label1);
+            ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Text = "Clientes";
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
@@ -353,10 +425,8 @@
         }
 
         private System.Windows.Forms.Button btnSeleccionar;
-
         private System.Windows.Forms.Label lblNombreObligatorio;
         private System.Windows.Forms.Label lblDniObligatorio;
-
         private System.Windows.Forms.Label lblCamposObligatorios;
 
         #endregion
