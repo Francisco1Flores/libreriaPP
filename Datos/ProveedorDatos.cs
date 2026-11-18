@@ -19,7 +19,7 @@ namespace Datos
                 // Usamos la cadena de conexión centralizada que configuraron en ConexionDB
                 using (MySqlConnection conexion = new MySqlConnection(ConexionDB.cadenaConexion))
                 {
-                    string query = "SELECT id, nombre, cuil, tel, email, estado FROM Proveedor";
+                    string query = "SELECT id, nombre, cuil, tel, email, estado FROM proveedor";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexion);
                     conexion.Open();
