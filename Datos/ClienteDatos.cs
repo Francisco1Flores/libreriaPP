@@ -16,7 +16,7 @@ namespace Datos
             MySqlConnection conexion = ConexionDB.ObtenerConexion();
             conexion.Open();
 
-            string consulta = $"INSERT INTO cliente (nombre, DNI, tel, email, direccion) VALUES ('{cliente.nombre}', {cliente.dni}, '{cliente.tel}', '{cliente.email}', '{cliente.direccion}');";
+            string consulta = $"INSERT INTO cliente (nombre, DNI, tel, email, direccion) VALUES ('{cliente.Nombre}', {cliente.Dni}, '{cliente.Telefono}', '{cliente.Email}', '{cliente.Direccion}');";
             MySqlCommand cmdAgregar = new MySqlCommand(consulta, conexion);
             int resultado = cmdAgregar.ExecuteNonQuery();
 
@@ -51,12 +51,12 @@ namespace Datos
             if (lector.Read())
             {
                 cliente = new Cliente();
-                cliente.id = lector.GetInt32("id");
-                cliente.nombre = lector.GetString("nombre");
-                cliente.dni = lector.GetInt32("dni");
-                cliente.tel = lector.GetString("tel");
-                cliente.email = lector.GetString("email");
-                cliente.direccion = lector.GetString("direccion");
+                cliente.Id = lector.GetInt32("id");
+                cliente.Nombre = lector.GetString("nombre");
+                cliente.Dni = lector.GetInt32("dni");
+                cliente.Telefono = lector.GetString("tel");
+                cliente.Email = lector.GetString("email");
+                cliente.Direccion = lector.GetString("direccion");
             }
             lector.Close();
             conexion.Close();
@@ -77,12 +77,12 @@ namespace Datos
             while (lector.Read())
             {
                 Cliente cliente = new Cliente();
-                cliente.id = lector.GetInt32("id");
-                cliente.nombre = lector.GetString("nombre");
-                cliente.dni = lector.GetInt32("dni");
-                cliente.tel = lector.GetString("tel");
-                cliente.email = lector.GetString("email");
-                cliente.direccion = lector.GetString("direccion");
+                cliente.Id = lector.GetInt32("id");
+                cliente.Nombre = lector.GetString("nombre");
+                cliente.Dni = lector.GetInt32("dni");
+                cliente.Telefono = lector.GetString("tel");
+                cliente.Email = lector.GetString("email");
+                cliente.Direccion = lector.GetString("direccion");
 
                 clientes.Add(cliente);
             }
@@ -92,7 +92,7 @@ namespace Datos
         }
         public void ModificarCliente(Cliente cliente)
         {
-            string sql = $"UPDATE cliente SET nombre = '{cliente.nombre}', tel = '{cliente.tel}', email = '{cliente.email}', direccion = '{cliente.direccion}' WHERE id = {cliente.id}";
+            string sql = $"UPDATE cliente SET nombre = '{cliente.Nombre}', tel = '{cliente.Telefono}', email = '{cliente.Email}', direccion = '{cliente.Direccion}' WHERE id = {cliente.Id}";
             ConexionDB.EjecutarQuery(sql);
         }
 

@@ -26,12 +26,12 @@ namespace Presentacion
                 btnAccion.Text = "Modificar";
                 this.Text = "Modificar Cliente";
 
-                txtNombre.Text = cliente.nombre;
-                txtDni.Text = cliente.dni.ToString();
+                txtNombre.Text = cliente.Nombre;
+                txtDni.Text = cliente.Dni.ToString();
                 txtDni.Enabled = false;
-                txtEmail.Text = cliente.email.Equals(strSinDatos) ? "" : cliente.email;
-                txtTel.Text = cliente.tel.Equals(strSinDatos) ? "" : cliente.tel;
-                txtDireccion.Text = cliente.direccion.Equals(strSinDatos) ? "" : cliente.direccion;
+                txtEmail.Text = cliente.Email.Equals(strSinDatos) ? "" : cliente.Email;
+                txtTel.Text = cliente.Telefono.Equals(strSinDatos) ? "" : cliente.Telefono;
+                txtDireccion.Text = cliente.Direccion.Equals(strSinDatos) ? "" : cliente.Direccion;
 
                 this.cliente = cliente;
             }
@@ -57,11 +57,11 @@ namespace Presentacion
 
             Cliente cliente = new Cliente();
 
-            cliente.nombre = txtNombre.Text.ToUpper();
-            cliente.dni = int.Parse(txtDni.Text);
-            cliente.tel = txtTel.Text;
-            cliente.email = txtEmail.Text;
-            cliente.direccion = txtDireccion.Text.ToUpper();
+            cliente.Nombre = txtNombre.Text.ToUpper();
+            cliente.Dni = int.Parse(txtDni.Text);
+            cliente.Telefono = txtTel.Text;
+            cliente.Email = txtEmail.Text;
+            cliente.Direccion = txtDireccion.Text.ToUpper();
 
             if (btnAccion.Text.Equals("Agregar"))
             {
@@ -71,15 +71,16 @@ namespace Presentacion
             }
             else if (btnAccion.Text.Equals("Modificar"))
             {
-                cliente.id = this.cliente.id;
+                cliente.Id = this.cliente.Id;
                 DialogResult respuesta = MessageBox.Show(
-                    $"Está seguro que desea modificar al cliente:\nDNI: {this.cliente.dni}.", "",
+                    $"Está seguro que desea modificar al cliente:\nDNI: {this.cliente.Dni}.", "",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
                 if (respuesta == DialogResult.Yes)
                 {
                     clienteNegocio.ModificarCliente(cliente);
                     formPadre.ActualizarClientes();
+                    formPadre.BuscarCliente();
                     this.Close();
                 }
             }

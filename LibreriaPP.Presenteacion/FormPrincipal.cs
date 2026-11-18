@@ -14,10 +14,11 @@ namespace Presentacion
 {
     public partial class FormPrincipal : Form
     {
-        private Panel panel;
+        private FormClientes FormClientes;
         public FormPrincipal()
         {
             InitializeComponent();
+            this.FormClientes = new FormClientes(null);
         }
 
         //  Método  para incrustar los formularios en el panel central
@@ -67,7 +68,7 @@ namespace Presentacion
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            AbrirFormularioEnPanel(new FormClientes());
+            AbrirFormularioEnPanel(new FormClientes(null));
         }
     }
 }

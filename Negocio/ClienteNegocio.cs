@@ -12,6 +12,13 @@ namespace Negocio
             clienteDatos.AgregarCliente(cliente);
         }
 
+        public Cliente BuscarPorDni(int Dni)
+        {
+            ClienteDatos clienteDatos = new ClienteDatos();
+            Cliente cliente = clienteDatos.ObtenerCliente(Dni);
+            return cliente;
+        }
+
         public List<Cliente> ListarClientes()
         {
             ClienteDatos clieteDatos = new ClienteDatos();
