@@ -9,7 +9,7 @@ namespace Datos
 {
     public class ConexionDB
     {        
-        public static string cadenaConexion = "Server=127.0.0.1;Port=3307;Database=libreriadb;Uid=root;Password=Mf020731;";
+        public static string cadenaConexion = "Server=127.0.0.1;Port=3306;Database=libreriadb;Uid=root;Password=Agostina123*;";
 
         public static MySqlConnection ObtenerConexion()
         {

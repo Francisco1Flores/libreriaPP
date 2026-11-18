@@ -2,15 +2,8 @@
 {
     partial class FormRegistrarCompra
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             cmbProveedor = new ComboBox();
@@ -41,64 +30,84 @@
             label4 = new Label();
             label5 = new Label();
             dgvDetalle = new DataGridView();
-            colIdProducto = new DataGridViewTextBoxColumn();
-            colNombreProducto = new DataGridViewTextBoxColumn();
-            colCantidad = new DataGridViewTextBoxColumn();
-            colPrecio = new DataGridViewTextBoxColumn();
-            colSubTotal = new DataGridViewTextBoxColumn();
             lblTotal = new Label();
-            btnProveedores = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvDetalle).BeginInit();
             SuspendLayout();
             // 
             // cmbProveedor
             // 
+            cmbProveedor.BackColor = Color.FromArgb(37, 37, 38);
             cmbProveedor.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbProveedor.FlatStyle = FlatStyle.Flat;
+            cmbProveedor.ForeColor = Color.FromArgb(240, 240, 240);
             cmbProveedor.FormattingEnabled = true;
-            cmbProveedor.Location = new Point(12, 43);
+            cmbProveedor.Location = new Point(24, 57);
+            cmbProveedor.Margin = new Padding(3, 4, 3, 4);
             cmbProveedor.Name = "cmbProveedor";
-            cmbProveedor.Size = new Size(142, 23);
+            cmbProveedor.Size = new Size(260, 28);
             cmbProveedor.TabIndex = 0;
             cmbProveedor.SelectedIndexChanged += cmbProveedor_SelectedIndexChanged;
             // 
             // cmbFormaPago
             // 
+            cmbFormaPago.BackColor = Color.FromArgb(37, 37, 38);
             cmbFormaPago.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbFormaPago.FlatStyle = FlatStyle.Flat;
+            cmbFormaPago.ForeColor = Color.FromArgb(240, 240, 240);
             cmbFormaPago.FormattingEnabled = true;
-            cmbFormaPago.Location = new Point(168, 43);
+            cmbFormaPago.Location = new Point(310, 57);
+            cmbFormaPago.Margin = new Padding(3, 4, 3, 4);
             cmbFormaPago.Name = "cmbFormaPago";
-            cmbFormaPago.Size = new Size(121, 23);
+            cmbFormaPago.Size = new Size(215, 28);
             cmbFormaPago.TabIndex = 1;
             // 
             // cmbProducto
             // 
+            cmbProducto.BackColor = Color.FromArgb(37, 37, 38);
             cmbProducto.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbProducto.FlatStyle = FlatStyle.Flat;
+            cmbProducto.ForeColor = Color.FromArgb(240, 240, 240);
             cmbProducto.FormattingEnabled = true;
-            cmbProducto.Location = new Point(12, 110);
+            cmbProducto.Location = new Point(24, 147);
+            cmbProducto.Margin = new Padding(3, 4, 3, 4);
             cmbProducto.Name = "cmbProducto";
-            cmbProducto.Size = new Size(142, 23);
+            cmbProducto.Size = new Size(260, 28);
             cmbProducto.TabIndex = 2;
             // 
             // txtCantidad
             // 
-            txtCantidad.Location = new Point(170, 110);
+            txtCantidad.BackColor = Color.FromArgb(37, 37, 38);
+            txtCantidad.BorderStyle = BorderStyle.FixedSingle;
+            txtCantidad.ForeColor = Color.FromArgb(240, 240, 240);
+            txtCantidad.Location = new Point(310, 147);
+            txtCantidad.Margin = new Padding(3, 4, 3, 4);
             txtCantidad.Name = "txtCantidad";
-            txtCantidad.Size = new Size(100, 23);
+            txtCantidad.Size = new Size(110, 27);
             txtCantidad.TabIndex = 3;
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(285, 110);
+            txtPrecio.BackColor = Color.FromArgb(37, 37, 38);
+            txtPrecio.BorderStyle = BorderStyle.FixedSingle;
+            txtPrecio.ForeColor = Color.FromArgb(240, 240, 240);
+            txtPrecio.Location = new Point(440, 147);
+            txtPrecio.Margin = new Padding(3, 4, 3, 4);
             txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(100, 23);
+            txtPrecio.Size = new Size(125, 27);
             txtPrecio.TabIndex = 4;
             // 
             // btnRegistrarCompra
             // 
-            btnRegistrarCompra.BackColor = Color.PaleGreen;
-            btnRegistrarCompra.Location = new Point(475, 339);
+            btnRegistrarCompra.BackColor = Color.FromArgb(65, 80, 140);
+            btnRegistrarCompra.Cursor = Cursors.Hand;
+            btnRegistrarCompra.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 60);
+            btnRegistrarCompra.FlatStyle = FlatStyle.Flat;
+            btnRegistrarCompra.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnRegistrarCompra.ForeColor = Color.White;
+            btnRegistrarCompra.Location = new Point(575, 455);
+            btnRegistrarCompra.Margin = new Padding(3, 4, 3, 4);
             btnRegistrarCompra.Name = "btnRegistrarCompra";
-            btnRegistrarCompra.Size = new Size(134, 23);
+            btnRegistrarCompra.Size = new Size(170, 36);
             btnRegistrarCompra.TabIndex = 5;
             btnRegistrarCompra.Text = "Registrar Compra";
             btnRegistrarCompra.UseVisualStyleBackColor = false;
@@ -106,57 +115,67 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.BackColor = Color.LightSteelBlue;
-            btnAgregar.Location = new Point(12, 139);
+            btnAgregar.BackColor = Color.FromArgb(55, 55, 60);
+            btnAgregar.Cursor = Cursors.Hand;
+            btnAgregar.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 60);
+            btnAgregar.FlatStyle = FlatStyle.Flat;
+            btnAgregar.ForeColor = Color.FromArgb(240, 240, 240);
+            btnAgregar.Location = new Point(595, 145);
+            btnAgregar.Margin = new Padding(3, 4, 3, 4);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(75, 23);
+            btnAgregar.Size = new Size(150, 31);
             btnAgregar.TabIndex = 6;
-            btnAgregar.Text = "Agregar";
+            btnAgregar.Text = "+ Agregar";
             btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 25);
+            label1.ForeColor = Color.FromArgb(240, 240, 240);
+            label1.Location = new Point(24, 33);
             label1.Name = "label1";
-            label1.Size = new Size(61, 15);
+            label1.Size = new Size(77, 20);
             label1.TabIndex = 7;
             label1.Text = "Proveedor";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(168, 25);
+            label2.ForeColor = Color.FromArgb(240, 240, 240);
+            label2.Location = new Point(310, 33);
             label2.Name = "label2";
-            label2.Size = new Size(87, 15);
+            label2.Size = new Size(109, 20);
             label2.TabIndex = 8;
             label2.Text = "Forma de Pago";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 92);
+            label3.ForeColor = Color.FromArgb(240, 240, 240);
+            label3.Location = new Point(24, 123);
             label3.Name = "label3";
-            label3.Size = new Size(119, 15);
+            label3.Size = new Size(149, 20);
             label3.TabIndex = 9;
             label3.Text = "Seleccionar Producto";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(170, 92);
+            label4.ForeColor = Color.FromArgb(240, 240, 240);
+            label4.Location = new Point(310, 123);
             label4.Name = "label4";
-            label4.Size = new Size(55, 15);
+            label4.Size = new Size(69, 20);
             label4.TabIndex = 10;
             label4.Text = "Cantidad";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(285, 92);
+            label5.ForeColor = Color.FromArgb(240, 240, 240);
+            label5.Location = new Point(440, 123);
             label5.Name = "label5";
-            label5.Size = new Size(40, 15);
+            label5.Size = new Size(50, 20);
             label5.TabIndex = 11;
             label5.Text = "Precio";
             // 
@@ -164,70 +183,37 @@
             // 
             dgvDetalle.AllowUserToAddRows = false;
             dgvDetalle.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDetalle.BackgroundColor = Color.FromArgb(45, 45, 48);
+            dgvDetalle.BorderStyle = BorderStyle.None;
             dgvDetalle.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDetalle.Columns.AddRange(new DataGridViewColumn[] { colIdProducto, colNombreProducto, colCantidad, colPrecio, colSubTotal });
-            dgvDetalle.Location = new Point(12, 168);
+            dgvDetalle.EnableHeadersVisualStyles = false;
+            dgvDetalle.GridColor = Color.FromArgb(60, 60, 60);
+            dgvDetalle.Location = new Point(24, 205);
+            dgvDetalle.Margin = new Padding(3, 4, 3, 4);
             dgvDetalle.Name = "dgvDetalle";
             dgvDetalle.ReadOnly = true;
-            dgvDetalle.Size = new Size(597, 125);
+            dgvDetalle.RowHeadersWidth = 35;
+            dgvDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDetalle.Size = new Size(721, 190);
             dgvDetalle.TabIndex = 12;
-            // 
-            // colIdProducto
-            // 
-            colIdProducto.HeaderText = "Id";
-            colIdProducto.Name = "colIdProducto";
-            colIdProducto.ReadOnly = true;
-            // 
-            // colNombreProducto
-            // 
-            colNombreProducto.HeaderText = "Producto";
-            colNombreProducto.Name = "colNombreProducto";
-            colNombreProducto.ReadOnly = true;
-            // 
-            // colCantidad
-            // 
-            colCantidad.HeaderText = "Cantidad";
-            colCantidad.Name = "colCantidad";
-            colCantidad.ReadOnly = true;
-            // 
-            // colPrecio
-            // 
-            colPrecio.HeaderText = "Precio Unitario";
-            colPrecio.Name = "colPrecio";
-            colPrecio.ReadOnly = true;
-            // 
-            // colSubTotal
-            // 
-            colSubTotal.HeaderText = "Subtotal";
-            colSubTotal.Name = "colSubTotal";
-            colSubTotal.ReadOnly = true;
             // 
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotal.Location = new Point(496, 308);
+            lblTotal.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            lblTotal.ForeColor = Color.FromArgb(187, 134, 252);
+            lblTotal.Location = new Point(585, 412);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(92, 19);
+            lblTotal.Size = new Size(135, 30);
             lblTotal.TabIndex = 13;
             lblTotal.Text = "Total: $ 0.00";
             // 
-            // btnProveedores
-            // 
-            btnProveedores.Location = new Point(454, 19);
-            btnProveedores.Name = "btnProveedores";
-            btnProveedores.Size = new Size(116, 47);
-            btnProveedores.TabIndex = 14;
-            btnProveedores.Text = "VER\r\nProveedores";
-            btnProveedores.UseVisualStyleBackColor = true;
-            btnProveedores.Click += btnProveedores_Click;
-            // 
             // FormRegistrarCompra
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnProveedores);
+            BackColor = Color.FromArgb(30, 30, 30);
+            ClientSize = new Size(775, 520);
             Controls.Add(lblTotal);
             Controls.Add(dgvDetalle);
             Controls.Add(label5);
@@ -242,7 +228,9 @@
             Controls.Add(cmbProducto);
             Controls.Add(cmbFormaPago);
             Controls.Add(cmbProveedor);
+            ForeColor = Color.FromArgb(240, 240, 240);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormRegistrarCompra";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Registrar Compra";
@@ -267,12 +255,6 @@
         private Label label4;
         private Label label5;
         private DataGridView dgvDetalle;
-        private DataGridViewTextBoxColumn colIdProducto;
-        private DataGridViewTextBoxColumn colNombreProducto;
-        private DataGridViewTextBoxColumn colCantidad;
-        private DataGridViewTextBoxColumn colPrecio;
-        private DataGridViewTextBoxColumn colSubTotal;
         private Label lblTotal;
-        private Button btnProveedores;
     }
 }

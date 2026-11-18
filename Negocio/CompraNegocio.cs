@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Datos;
 using Entidades;
 
@@ -12,11 +10,29 @@ namespace Negocio
     {
         private CompraDatos objCompraDatos = new CompraDatos();
 
+        public DetalleCompra CrearDetalle(int idProducto, string nombreProducto, int cantidad, decimal precioUnitario)
+        {
+            return new DetalleCompra()
+            {
+                IdProducto = idProducto,
+                NombreProducto = nombreProducto,
+                Cantidad = cantidad,
+                SubTotal = cantidad * precioUnitario
+            };
+        }
+
+        public decimal CalcularTotal(List<DetalleCompra> listaDetalle)
+        {
+            if (listaDetalle == null || listaDetalle.Count == 0)
+                return 0;
+
+            return listaDetalle.Sum(item => item.SubTotal);
+        }
+
         public bool RegistrarCompra(Compra objCompra, List<DetalleCompra> listaDetalle, out string mensaje)
         {
             mensaje = string.Empty;
 
-            // 1. Validaciones de Negocio
             if (objCompra.IdProveedor <= 0)
             {
                 mensaje = "Debe seleccionar un proveedor válido.";
@@ -41,7 +57,6 @@ namespace Negocio
                 return false;
             }
 
-            // 2. Si pasa las validaciones, enviamos a la Capa de Datos
             return objCompraDatos.RegistrarCompra(objCompra, listaDetalle, out mensaje);
         }
     }
