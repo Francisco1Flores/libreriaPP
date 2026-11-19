@@ -75,11 +75,8 @@ namespace Presentacion
         public void SetDGVStyle(DataGridView dgv)
         {
             dgv.EnableHeadersVisualStyles = false;
-
-            Color color = Color.FromArgb(0x00,0x00,0x00);
             
-            //dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = color;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -88,13 +85,6 @@ namespace Presentacion
         public void ActualizarClientes()
         {
             listaClientes = clienteNegocio.ListarClientes();
-            /*
-            foreach( var cliente in listaClientes )
-            {
-                if (cliente.tel.Equals("")) cliente.tel = "--SIN DATOS--";
-                if (cliente.email.Equals("")) cliente.email = "--SIN DATOS--";
-                if (cliente.direccion.Equals("")) cliente.direccion = "--SIN DATOS--";
-            }*/
             dgvClientes.DataSource = listaClientes;
         }
 
@@ -265,6 +255,7 @@ namespace Presentacion
             
             ClienteSeleccionado = cliente;
         }
+        
         private void dgvClientes_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             MostrarDatosClienteSeleccionado();
@@ -386,7 +377,6 @@ namespace Presentacion
             if (!valido)
             {
                 erroresSb.AppendLine("- " + Mensaje);
-                //MessageBox.Show(Mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return valido;
         }

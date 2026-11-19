@@ -20,7 +20,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="FormBuscarCliente.cs">
+    <Compile Update="FormBuscarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
