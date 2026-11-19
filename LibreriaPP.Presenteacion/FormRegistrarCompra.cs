@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using Negocio;
@@ -14,18 +11,27 @@ namespace Presentacion
 {
     public partial class FormRegistrarCompra : Form
     {
-        // Lista temporal para almacenar los productos que vamos agregando antes de guardarlos
         private List<DetalleCompra> listaDetalleTemporal = new List<DetalleCompra>();
+        private CompraNegocio objCompraNegocio = new CompraNegocio();
 
         public FormRegistrarCompra()
         {
             InitializeComponent();
-            CargarProveedores();
-            CargarFormasPago();
-            CargarProductos();
+            AplicarEstiloGrilla();
         }
 
-        // Este evento se ejecuta automáticamente cuando se abre la ventana
+        private void AplicarEstiloGrilla()
+        {
+            dgvDetalle.DefaultCellStyle.BackColor = Color.FromArgb(45, 45, 48);
+            dgvDetalle.DefaultCellStyle.ForeColor = Color.FromArgb(240, 240, 240);
+            dgvDetalle.DefaultCellStyle.SelectionBackColor = Color.FromArgb(90, 70, 130);
+            dgvDetalle.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvDetalle.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(35, 35, 38);
+            dgvDetalle.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvDetalle.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvDetalle.CellDoubleClick += dgvDetalle_CellDoubleClick;
+        }
+
         private void FormRegistrarCompra_Load(object sender, EventArgs e)
         {
             CargarProveedores();
@@ -33,7 +39,6 @@ namespace Presentacion
             CargarProductos();
         }
 
-        // 1. Método para llenar el ComboBox de Proveedores
         private void CargarProveedores()
         {
             cmbProveedor.DataSource = new ProveedorNegocio().Listar();
@@ -42,10 +47,8 @@ namespace Presentacion
             cmbProveedor.SelectedIndex = -1;
         }
 
-        // 2. Método para llenar las Formas de Pago
         private void CargarFormasPago()
         {
-            // (Si aún no tienes una tabla de formas de pago, puedes armar una lista estática o consulta rápida)
             DataTable dtFormasPago = new DataTable();
             dtFormasPago.Columns.Add("IdFormaPago", typeof(int));
             dtFormasPago.Columns.Add("Descripcion", typeof(string));
@@ -60,25 +63,15 @@ namespace Presentacion
             cmbFormaPago.SelectedIndex = -1;
         }
 
-        // 3. Método para llenar el ComboBox de Productos
         private void CargarProductos()
         {
-            DataTable dtProductos = new DataTable();
-            dtProductos.Columns.Add("IdProducto", typeof(int));
-            dtProductos.Columns.Add("Nombre", typeof(string));
-
-            dtProductos.Rows.Add(1, "Cuaderno A4");
-            dtProductos.Rows.Add(2, "Lápiz Negro");
-            dtProductos.Rows.Add(3, "Impresora Térmica");
-
-            cmbProducto.DataSource = dtProductos;
-            cmbProducto.DisplayMember = "Nombre";
-            cmbProducto.ValueMember = "IdProducto";
+            // Traemos el DataTable real de Stock (columnas: "ID", "Producto", "Precio Lista ($)", etc.)
+            cmbProducto.DataSource = new Negocio.Negocio.ProductoNegocio().ObtenerStock();
+            cmbProducto.DisplayMember = "Producto";
+            cmbProducto.ValueMember = "ID";
             cmbProducto.SelectedIndex = -1;
-        
         }
 
-        // 4. Botón "Agregar" (Suma el producto a la tabla temporal)
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (cmbProducto.SelectedIndex == -1)
@@ -86,15 +79,6 @@ namespace Presentacion
                 MessageBox.Show("Por favor, seleccione un producto.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            if (string.IsNullOrWhiteSpace(txtCantidad.Text) || string.IsNullOrWhiteSpace(txtPrecio.Text))
-            {
-                MessageBox.Show("Debe ingresar la cantidad y el precio unitario.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int idProducto = Convert.ToInt32(cmbProducto.SelectedValue);
-            string nombreProducto = cmbProducto.Text;
 
             if (!int.TryParse(txtCantidad.Text, out int cantidad) || cantidad <= 0)
             {
@@ -108,89 +92,43 @@ namespace Presentacion
                 return;
             }
 
-            decimal subTotal = cantidad * precio;
+            int idProducto = Convert.ToInt32(cmbProducto.SelectedValue);
+            string nombreProducto = cmbProducto.Text;
 
-            // 2. Agregamos a la lista temporal de detalles
-            listaDetalleTemporal.Add(new DetalleCompra()
-            {
-                IdProducto = idProducto,
-                Cantidad = cantidad,
-                SubTotal = subTotal
-            });
+            DetalleCompra detalle = objCompraNegocio.CrearDetalle(idProducto, nombreProducto, cantidad, precio);
+            listaDetalleTemporal.Add(detalle);
 
-            // 3. Refrescamos el DataGridView
-            dgvDetalle.DataSource = null;
-            dgvDetalle.DataSource = listaDetalleTemporal;
+            RefrescarGrillaDetalle();
+            ActualizarTotalVisual();
 
-            // 4. Actualizamos el total general de la compra
-            CalcularTotalGeneral();
-
-            // 5. Limpiamos los campos para cargar el siguiente producto
             txtCantidad.Clear();
             txtPrecio.Clear();
             cmbProducto.SelectedIndex = -1;
         }
 
-        // 5. Método auxiliar para sumar todos los subtotales
-        private void CalcularTotalGeneral()
+        private void RefrescarGrillaDetalle()
         {
-            decimal totalGeneral = 0;
-            foreach (var item in listaDetalleTemporal)
+            dgvDetalle.DataSource = null;
+            dgvDetalle.DataSource = listaDetalleTemporal.Select(d => new
             {
-                totalGeneral += item.SubTotal;
-            }
-            // Mostramos el monto formateado en la etiqueta que agregaste al diseño
-            lblTotal.Text = $"Total: $ {totalGeneral:N2}";
+                Id = d.IdProducto,
+                Producto = d.NombreProducto,
+                d.Cantidad,
+                PrecioUnitario = d.PrecioUnitario.ToString("C2"),
+                Subtotal = d.SubTotal.ToString("C2")
+            }).ToList();
+
+            if (dgvDetalle.Columns["PrecioUnitario"] != null)
+                dgvDetalle.Columns["PrecioUnitario"].HeaderText = "Precio Unitario";
         }
 
-        // 6. Botón Principal "Registrar Compra" (Guarda cabecera y detalles en la BD)
+        private void ActualizarTotalVisual()
+        {
+            decimal total = objCompraNegocio.CalcularTotal(listaDetalleTemporal);
+            lblTotal.Text = $"Total: $ {total:N2}";
+        }
+
         private void btnRegistrarCompra_Click(object sender, EventArgs e)
-        {
-            // Armamos el objeto principal de la Compra
-            Compra nuevaCompra = new Compra()
-            {
-                IdProveedor = Convert.ToInt32(cmbProveedor.SelectedValue),
-                IdFormaPago = Convert.ToInt32(cmbFormaPago.SelectedValue),
-                Total = ObtenerTotalCalculado()
-            };
-
-            string mensaje = string.Empty;
-
-            // Invocamos a la Capa de Negocio que maneja la transacción
-            bool resultado = new CompraNegocio().RegistrarCompra(nuevaCompra, listaDetalleTemporal, out mensaje);
-
-            if (resultado)
-            {
-                MessageBox.Show("¡Compra registrada exitosamente y stock actualizado!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close(); // Cerramos la ventana
-            }
-            else
-            {
-                MessageBox.Show("No se pudo registrar la compra: " + mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private decimal ObtenerTotalCalculado()
-        {
-            decimal total = 0;
-            foreach (var item in listaDetalleTemporal) total += item.SubTotal;
-            return total;
-        }
-        private void cmbProveedor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Por ahora lo dejamos vacío para que el diseñador no se queje
-        }
-
-        private void btnProveedores_Click(object sender, EventArgs e)
-        {
-            FormCompras frm = new FormCompras();
-            frm.ShowDialog();
-
-            // Al cerrar la ventana, se actualiza el combo automáticamente:
-            CargarProveedores();
-        }
-
-        private void btnRegistrarCompra_Click_1(object sender, EventArgs e)
         {
             if (cmbProveedor.SelectedIndex == -1 || cmbFormaPago.SelectedIndex == -1)
             {
@@ -198,28 +136,49 @@ namespace Presentacion
                 return;
             }
 
-            // 2. Armar la cabecera de la Compra
             Compra nuevaCompra = new Compra()
             {
                 IdProveedor = Convert.ToInt32(cmbProveedor.SelectedValue),
                 IdFormaPago = Convert.ToInt32(cmbFormaPago.SelectedValue),
-                Total = ObtenerTotalCalculado()
+                Total = objCompraNegocio.CalcularTotal(listaDetalleTemporal)
             };
 
             string mensaje = string.Empty;
+            bool resultado = objCompraNegocio.RegistrarCompra(nuevaCompra, listaDetalleTemporal, out mensaje);
 
-            // 3. Invocación a CompraNegocio
-            bool resultado = new CompraNegocio().RegistrarCompra(nuevaCompra, listaDetalleTemporal, out mensaje);
-
-            // 4. Mensaje de resultado
             if (resultado)
             {
-                MessageBox.Show("¡Compra registrada exitosamente y stock actualizado!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("¡Compra registrada exitosamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             else
             {
                 MessageBox.Show("No se pudo registrar la compra: " + mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+
+        private void dgvDetalle_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex >= listaDetalleTemporal.Count)
+                return;
+
+            string producto = listaDetalleTemporal[e.RowIndex].NombreProducto;
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Desea quitar '{producto}' del detalle de compra?",
+                "Quitar producto",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmacion == DialogResult.Yes)
+            {
+                listaDetalleTemporal.RemoveAt(e.RowIndex);
+                RefrescarGrillaDetalle();
+                ActualizarTotalVisual();
             }
         }
     }

@@ -70,5 +70,10 @@ namespace Presentacion
         {
             AbrirFormularioEnPanel(new FormClientes(null));
         }
+
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new FormProveedor());
+        }
     }
 }

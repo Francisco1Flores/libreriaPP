@@ -54,7 +54,7 @@ namespace Presentacion
 
             if (padre == null)
             {
-                MostrarBoton(btnEliminar,btnModificar, btnNuevo);
+                MostrarBoton(btnEliminar, btnModificar, btnNuevo);
             }
             else
             {
@@ -63,28 +63,39 @@ namespace Presentacion
             }
 
             MostrarDatosClienteSeleccionado();
-            
+
             lblCamposObligatorios.Visible = false;
-            lblNombreObligatorio.Visible  = false;
-            lblDniObligatorio.Visible     = false;
-            Estilos.BotonesVerdes(btnNuevo, btnAgregar);
-            Estilos.BotonesAzules(btnModificar, btnGuardarDatos);
-            Estilos.BotonesRojos(btnEliminar, btnCancelar);
+            lblNombreObligatorio.Visible = false;
+            lblDniObligatorio.Visible = false;
+
+            // Comentado para mantener el estilo oscuro unificado de los botones
+            // Estilos.BotonesVerdes(btnNuevo, btnAgregar);
+            // Estilos.BotonesAzules(btnModificar, btnGuardarDatos);
+            // Estilos.BotonesRojos(btnEliminar, btnCancelar);
         }
 
         public void SetDGVStyle(DataGridView dgv)
         {
             dgv.EnableHeadersVisualStyles = false;
-            
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
+
+            // Estilo de cabecera unificado con el modo oscuro del sistema
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(35, 35, 38);
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 12, FontStyle.Bold);
-            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
         }
 
         public void ActualizarClientes()
         {
             listaClientes = clienteNegocio.ListarClientes();
+            /*
+            foreach( var cliente in listaClientes )
+            {
+                if (cliente.tel.Equals("")) cliente.tel = "--SIN DATOS--";
+                if (cliente.email.Equals("")) cliente.email = "--SIN DATOS--";
+                if (cliente.direccion.Equals("")) cliente.direccion = "--SIN DATOS--";
+            }*/
             dgvClientes.DataSource = listaClientes;
         }
 
@@ -199,10 +210,10 @@ namespace Presentacion
             MostrarBoton(btnCancelar);
 
             dgvClientes.Enabled = false;
-            
+
             lblCamposObligatorios.Visible = true;
-            lblNombreObligatorio.Visible  = true;
-            lblDniObligatorio.Visible     = true;
+            lblNombreObligatorio.Visible = true;
+            lblDniObligatorio.Visible = true;
         }
 
         private void LimpiarCampos()
@@ -223,7 +234,8 @@ namespace Presentacion
                 IndiceFilaSeleccionada = dgvClientes.CurrentCell.RowIndex;
             }
 
-            if (IndiceFilaSeleccionada < 0)
+            // Evita error si la tabla está vacía
+            if (IndiceFilaSeleccionada < 0 || IndiceFilaSeleccionada >= dgvClientes.Rows.Count)
             {
                 LimpiarCampos();
                 ClienteSeleccionado = null;
@@ -252,10 +264,9 @@ namespace Presentacion
             txtEmail.Text = cliente.Email;
             txtTel.Text = cliente.Telefono;
             txtDireccion.Text = cliente.Direccion;
-            
+
             ClienteSeleccionado = cliente;
         }
-        
         private void dgvClientes_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             MostrarDatosClienteSeleccionado();
@@ -268,7 +279,7 @@ namespace Presentacion
 
             OcultarBotones();
 
-            MostrarBoton(btnGuardarDatos,btnCancelar);
+            MostrarBoton(btnGuardarDatos, btnCancelar);
         }
 
         private void MostrarBoton(params Button[] buttons)
@@ -279,7 +290,7 @@ namespace Presentacion
                 b.Visible = true;
             }
         }
-        
+
         private void OcultarBoton(params Button[] buttons)
         {
             foreach (Button b in buttons)
@@ -302,22 +313,22 @@ namespace Presentacion
             OcultarBotones();
 
             MostrarBoton(btnModificar, btnEliminar, btnNuevo);
-            
+
             lblCamposObligatorios.Visible = false;
-            lblNombreObligatorio.Visible  = false;
-            lblDniObligatorio.Visible     = false;
+            lblNombreObligatorio.Visible = false;
+            lblDniObligatorio.Visible = false;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             EliminarCliente(null);
         }
-        
+
         private bool DatosValidos(ClienteNegocio clienteNegocio, string accion)
         {
             bool Resultado = true;
             erroresSb.Clear();
-            
+
             if (string.IsNullOrEmpty(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtNombre.Text))
             {
@@ -370,13 +381,14 @@ namespace Presentacion
             }
             return Resultado;
         }
-        
+
         private bool ValidarCampo(Func<bool> validacion, string Mensaje)
         {
             bool valido = validacion();
             if (!valido)
             {
                 erroresSb.AppendLine("- " + Mensaje);
+                //MessageBox.Show(Mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return valido;
         }
@@ -388,7 +400,7 @@ namespace Presentacion
                 MessageBox.Show("Seleccione un cliente.");
                 return;
             }
-            
+
             if (!DatosValidos(clienteNegocio, "Modificar"))
             {
                 return;
@@ -396,28 +408,28 @@ namespace Presentacion
 
             Cliente cliente = new Cliente();
 
-            cliente.Nombre    = txtNombre.Text.ToUpper();
-            cliente.Dni       = int.Parse(txtDni.Text);
-            cliente.Telefono  = txtTel.Text;
-            cliente.Email     = txtEmail.Text;
+            cliente.Nombre = txtNombre.Text.ToUpper();
+            cliente.Dni = int.Parse(txtDni.Text);
+            cliente.Telefono = txtTel.Text;
+            cliente.Email = txtEmail.Text;
             cliente.Direccion = txtDireccion.Text.ToUpper();
-            cliente.Id        = ClienteSeleccionado.Id;;
-            
-            DialogResult Respuesta = MessageBox.Show( $"Está seguro que desea modificar al cliente:\nDNI: {cliente.Dni}.",
+            cliente.Id = ClienteSeleccionado.Id; ;
+
+            DialogResult Respuesta = MessageBox.Show($"Está seguro que desea modificar al cliente:\nDNI: {cliente.Dni}.",
                                               "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (Respuesta == DialogResult.Yes)
             {
                 clienteNegocio.ModificarCliente(cliente);
                 MessageBox.Show("Datos modificados correctamente.");
-                
+
                 OcultarBotones();
                 MostrarBoton(btnNuevo, btnModificar, btnEliminar);
-                
+
                 dgvClientes.Enabled = true;
-                
+
                 CamposHabilitados(false);
                 MostrarDatosClienteSeleccionado();
-                
+
                 ActualizarClientes();
                 BuscarCliente();
             }
@@ -439,22 +451,22 @@ namespace Presentacion
             cliente.Direccion = txtDireccion.Text.ToUpper();
 
             clienteNegocio.AgregarCliente(cliente);
-            
+
             OcultarBotones();
             MostrarBoton(btnNuevo, btnModificar, btnEliminar);
-            
+
             MessageBox.Show("Cliente guardado correctamente.");
-            
+
             ActualizarClientes();
             BuscarCliente();
-            
+
             dgvClientes.Enabled = true;
             MostrarDatosClienteSeleccionado();
             CamposHabilitados(false);
-            
+
             lblCamposObligatorios.Visible = false;
-            lblNombreObligatorio.Visible  = false;
-            lblDniObligatorio.Visible     = false;
+            lblNombreObligatorio.Visible = false;
+            lblDniObligatorio.Visible = false;
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
