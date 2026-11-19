@@ -10,7 +10,7 @@ namespace Presentacion
         private ClienteNegocio clienteNegocio = new ClienteNegocio();
         
         private ProductoNegocio_ productoNegocio = new ProductoNegocio_();
-        private Producto_ productoSeleccionadoActual;
+        private Producto productoSeleccionadoActual;
         
         private List<DetalleVentaFront> listaCarrito;
 
@@ -36,6 +36,8 @@ namespace Presentacion
             txtTotal.Text = "0";
 
             ventaNegocio = new VentaNegocio();
+
+            cmbFormasDePago.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void IniciarCarrito()
@@ -76,7 +78,7 @@ namespace Presentacion
             formClientes.ShowDialog();
         }
 
-        public void EstablecerProductoSeleccionado(Producto_ producto)
+        public void EstablecerProductoSeleccionado(Producto producto)
         {
             txtCodigoProducto.Text = producto.CodigoBarra;
             
@@ -85,7 +87,7 @@ namespace Presentacion
             
             txtPrecio.Text = producto.PrecioVenta.ToString();
             
-            txtStock.Text = producto.Stock.ToString();
+            txtStock.Text = producto.CantidadStock.ToString();
             txtStock.Enabled = false;
             
             txtCantidad.Text = "1";
@@ -177,7 +179,7 @@ namespace Presentacion
             int stock = int.Parse(txtStock.Text);
             if (cantidad > stock)
             {
-                MessageBox.Show("Cantidad mayor stock disponible", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cantidad ingresada mayor a stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCantidad.Text = txtStock.Text;
                 return;
             }
@@ -228,7 +230,9 @@ namespace Presentacion
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
         {
-            new FormBuscarProducto(this).ShowDialog();
+            var formBuscarProducto = new FormBuscarProducto(this);
+            formBuscarProducto.StartPosition = FormStartPosition.CenterScreen;
+            formBuscarProducto.ShowDialog();
         }
 
         private void txtCodigoProducto_KeyPress(object sender, KeyPressEventArgs e)
@@ -238,7 +242,7 @@ namespace Presentacion
                 Producto_ producto = productoNegocio.BuscarPorCodigoDeBarras(txtCodigoProducto.Text);
                 if (producto != null)
                 {
-                    EstablecerProductoSeleccionado(producto);
+                    EstablecerProductoSeleccionado(producto.toProducto());
                 }
             }
         }
@@ -331,7 +335,7 @@ namespace Presentacion
                  {
                      Cliente NuevoCliente = new Cliente();
                      NuevoCliente.Dni = int.Parse(txtDniCliente.Text.Trim());
-                     NuevoCliente.Nombre = txtDniCliente.Text.Trim();
+                     NuevoCliente.Nombre = txtNombreCliente.Text.Trim().ToUpper();
                      NuevoCliente.Telefono = txtTelCliente.Text.Trim();
                      clienteNegocio.AgregarCliente(NuevoCliente);
                      ClienteSeleccionado = clienteNegocio.BuscarPorDni(NuevoCliente.Dni);
@@ -386,8 +390,14 @@ namespace Presentacion
              }
              catch (Exception ex)
              {
-                 MessageBox.Show("Ocurrió un error al registrar la venta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 MessageBox.Show("Ocurrió un error al registrar la venta: " + ex.Message+ ":\n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
              }
+        }
+
+        private void btnLimpiarProducto_Click(object sender, EventArgs e)
+        {
+            productoSeleccionadoActual = null;
+            txtCodigoProducto.Text = txtNombreProducto.Text = txtPrecio.Text = txtCantidad.Text = txtStock.Text = "";
         }
     }
 }

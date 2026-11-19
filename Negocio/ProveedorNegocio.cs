@@ -14,6 +14,12 @@ namespace Negocio
         {
             return objProveedorDatos.ListarProveedores();
         }
+
+        public List<Proveedor> ListarActivos()
+        {
+            return objProveedorDatos.ListarProveedoresActivos();
+        }
+        
         public int Registrar(Proveedor obj, out string mensaje)
         {
             mensaje = string.Empty;

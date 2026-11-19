@@ -1,18 +1,20 @@
 ﻿using Entidades;
 using MySqlConnector;
-using MySqlX.XDevAPI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Datos
 {
     public class ClienteDatos
     {
         public Cliente AgregarCliente(Cliente cliente)
-        {            
+        {
+            ClienteDTO clienteDto = ObtenerClienteConEstado(cliente.Dni);
+            if (clienteDto.Cliente != null)
+            {
+                cliente.Id = clienteDto.Cliente.Id;
+                ModificarCliente(cliente);
+                return ObtenerCliente(cliente.Dni);
+            }
+            
             MySqlConnection conexion = ConexionDB.ObtenerConexion();
             conexion.Open();
 
@@ -43,7 +45,7 @@ namespace Datos
             MySqlConnection conexion = ConexionDB.ObtenerConexion();
             conexion.Open();
 
-            string consulta = $"SELECT * FROM cliente WHERE dni = {dni};";
+            string consulta = $"SELECT * FROM cliente WHERE dni = {dni} AND estado = TRUE;";
             MySqlCommand cmd = new MySqlCommand(consulta, conexion);
 
             MySqlDataReader lector = cmd.ExecuteReader();
@@ -62,6 +64,34 @@ namespace Datos
             conexion.Close();
             return cliente;
         }
+        
+        private ClienteDTO ObtenerClienteConEstado(int dni)
+        {
+            Cliente cliente = null;
+            MySqlConnection conexion = ConexionDB.ObtenerConexion();
+            conexion.Open();
+
+            string consulta = $"SELECT * FROM cliente WHERE dni = {dni};";
+            MySqlCommand cmd = new MySqlCommand(consulta, conexion);
+
+            MySqlDataReader lector = cmd.ExecuteReader();
+
+            bool estado = false;
+            if (lector.Read())
+            {
+                cliente = new Cliente();
+                cliente.Id = lector.GetInt32("id");
+                cliente.Nombre = lector.GetString("nombre");
+                cliente.Dni = lector.GetInt32("dni");
+                cliente.Telefono = lector.GetString("tel");
+                cliente.Email = lector.GetString("email");
+                cliente.Direccion = lector.GetString("direccion");
+                estado = lector.GetBoolean("estado");
+            }
+            lector.Close();
+            conexion.Close();
+            return new ClienteDTO(cliente, estado);
+        }
 
         public List<Cliente> ListarClientes() 
         {
@@ -70,7 +100,7 @@ namespace Datos
             MySqlConnection conexion = ConexionDB.ObtenerConexion();
             conexion.Open();
 
-            string consulta = "SELECT * FROM cliente;";
+            string consulta = "SELECT * FROM cliente WHERE estado = TRUE;";
             MySqlCommand cmd = new MySqlCommand(consulta, conexion);
 
             MySqlDataReader lector = cmd.ExecuteReader();
@@ -92,13 +122,14 @@ namespace Datos
         }
         public void ModificarCliente(Cliente cliente)
         {
-            string sql = $"UPDATE cliente SET nombre = '{cliente.Nombre}', tel = '{cliente.Telefono}', email = '{cliente.Email}', direccion = '{cliente.Direccion}' WHERE id = {cliente.Id}";
+            string sql = $"UPDATE cliente SET nombre = '{cliente.Nombre}', tel = '{cliente.Telefono}', email = '{cliente.Email}', direccion = '{cliente.Direccion}', estado = TRUE WHERE id = {cliente.Id}";
             ConexionDB.EjecutarQuery(sql);
         }
 
         public void EliminarCliente(int id)
         {           
-            string sql = $"DELETE FROM cliente WHERE id = {id};";
+            string sql = $"UPDATE cliente SET estado = false WHERE id = {id}";
+            //string sql = $"DELETE FROM cliente WHERE id = {id};";
             ConexionDB.EjecutarQuery(sql);
         }
     }

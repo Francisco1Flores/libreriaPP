@@ -28,11 +28,11 @@ namespace Presentacion
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             label1 = new System.Windows.Forms.Label();
             txtBuscarCliente = new System.Windows.Forms.TextBox();
             dgvClientes = new System.Windows.Forms.DataGridView();
             label2 = new System.Windows.Forms.Label();
-            btnNuevoCliente = new System.Windows.Forms.Button();
             groupBox1 = new System.Windows.Forms.GroupBox();
             btnSeleccionar = new System.Windows.Forms.Button();
             lblDniObligatorio = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@ namespace Presentacion
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Verdana", 16.2F, ((System.Drawing.FontStyle)(System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic)), System.Drawing.GraphicsUnit.Point, ((byte)0));
-            label1.ForeColor = System.Drawing.Color.FromArgb(187, 134, 252);
+            label1.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)187)), ((int)((byte)134)), ((int)((byte)252)));
             label1.Location = new System.Drawing.Point(67, 24);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(523, 34);
@@ -72,9 +72,9 @@ namespace Presentacion
             // 
             // txtBuscarCliente
             // 
-            txtBuscarCliente.BackColor = System.Drawing.Color.FromArgb(37, 37, 38);
+            txtBuscarCliente.BackColor = System.Drawing.Color.FromArgb(((int)((byte)37)), ((int)((byte)37)), ((int)((byte)38)));
             txtBuscarCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            txtBuscarCliente.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            txtBuscarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             txtBuscarCliente.Location = new System.Drawing.Point(80, 136);
             txtBuscarCliente.Name = "txtBuscarCliente";
             txtBuscarCliente.Size = new System.Drawing.Size(307, 27);
@@ -86,15 +86,19 @@ namespace Presentacion
             dgvClientes.AllowUserToAddRows = false;
             dgvClientes.AllowUserToDeleteRows = false;
             dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dgvClientes.BackgroundColor = System.Drawing.Color.FromArgb(45, 45, 48);
+            dgvClientes.BackgroundColor = System.Drawing.Color.FromArgb(((int)((byte)45)), ((int)((byte)45)), ((int)((byte)48)));
             dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(45, 45, 48);
-            dgvClientes.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
-            dgvClientes.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(90, 70, 130);
-            dgvClientes.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)((byte)45)), ((int)((byte)45)), ((int)((byte)48)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)((byte)90)), ((int)((byte)70)), ((int)((byte)130)));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dgvClientes.DefaultCellStyle = dataGridViewCellStyle1;
             dgvClientes.EnableHeadersVisualStyles = false;
-            dgvClientes.GridColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            dgvClientes.GridColor = System.Drawing.Color.FromArgb(((int)((byte)60)), ((int)((byte)60)), ((int)((byte)60)));
             dgvClientes.Location = new System.Drawing.Point(80, 174);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
@@ -106,31 +110,16 @@ namespace Presentacion
             // label2
             // 
             label2.AutoSize = true;
-            label2.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            label2.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             label2.Location = new System.Drawing.Point(80, 113);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(212, 20);
             label2.TabIndex = 4;
             label2.Text = "Buscar cliente (Nombre o DNI)";
             // 
-            // btnNuevoCliente
-            // 
-            btnNuevoCliente.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
-            btnNuevoCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnNuevoCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
-            btnNuevoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnNuevoCliente.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
-            btnNuevoCliente.Location = new System.Drawing.Point(1187, 134);
-            btnNuevoCliente.Name = "btnNuevoCliente";
-            btnNuevoCliente.Size = new System.Drawing.Size(137, 29);
-            btnNuevoCliente.TabIndex = 5;
-            btnNuevoCliente.Text = "Nuevo";
-            btnNuevoCliente.UseVisualStyleBackColor = false;
-            btnNuevoCliente.Click += btnNuevoCliente_Click_1;
-            // 
             // groupBox1
             // 
-            groupBox1.BackColor = System.Drawing.Color.FromArgb(45, 45, 48);
+            groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)((byte)45)), ((int)((byte)45)), ((int)((byte)48)));
             groupBox1.Controls.Add(btnSeleccionar);
             groupBox1.Controls.Add(lblDniObligatorio);
             groupBox1.Controls.Add(lblNombreObligatorio);
@@ -152,7 +141,7 @@ namespace Presentacion
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label5);
-            groupBox1.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             groupBox1.Location = new System.Drawing.Point(77, 663);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new System.Drawing.Size(1247, 254);
@@ -162,11 +151,11 @@ namespace Presentacion
             // 
             // btnSeleccionar
             // 
-            btnSeleccionar.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
+            btnSeleccionar.BackColor = System.Drawing.Color.FromArgb(((int)((byte)55)), ((int)((byte)55)), ((int)((byte)60)));
             btnSeleccionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnSeleccionar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnSeleccionar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)((byte)60)), ((int)((byte)60)), ((int)((byte)60)));
             btnSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnSeleccionar.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            btnSeleccionar.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             btnSeleccionar.Location = new System.Drawing.Point(486, 176);
             btnSeleccionar.Name = "btnSeleccionar";
             btnSeleccionar.Size = new System.Drawing.Size(145, 29);
@@ -177,7 +166,7 @@ namespace Presentacion
             // 
             // lblDniObligatorio
             // 
-            lblDniObligatorio.ForeColor = System.Drawing.Color.FromArgb(187, 134, 252);
+            lblDniObligatorio.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)187)), ((int)((byte)134)), ((int)((byte)252)));
             lblDniObligatorio.Location = new System.Drawing.Point(820, 56);
             lblDniObligatorio.Name = "lblDniObligatorio";
             lblDniObligatorio.Size = new System.Drawing.Size(29, 23);
@@ -186,7 +175,7 @@ namespace Presentacion
             // 
             // lblNombreObligatorio
             // 
-            lblNombreObligatorio.ForeColor = System.Drawing.Color.FromArgb(187, 134, 252);
+            lblNombreObligatorio.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)187)), ((int)((byte)134)), ((int)((byte)252)));
             lblNombreObligatorio.Location = new System.Drawing.Point(496, 55);
             lblNombreObligatorio.Name = "lblNombreObligatorio";
             lblNombreObligatorio.Size = new System.Drawing.Size(29, 23);
@@ -195,7 +184,7 @@ namespace Presentacion
             // 
             // lblCamposObligatorios
             // 
-            lblCamposObligatorios.ForeColor = System.Drawing.Color.FromArgb(187, 134, 252);
+            lblCamposObligatorios.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)187)), ((int)((byte)134)), ((int)((byte)252)));
             lblCamposObligatorios.Location = new System.Drawing.Point(6, 23);
             lblCamposObligatorios.Name = "lblCamposObligatorios";
             lblCamposObligatorios.Size = new System.Drawing.Size(187, 23);
@@ -204,11 +193,11 @@ namespace Presentacion
             // 
             // btnCancelar
             // 
-            btnCancelar.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
+            btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)((byte)55)), ((int)((byte)55)), ((int)((byte)60)));
             btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)((byte)60)), ((int)((byte)60)), ((int)((byte)60)));
             btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnCancelar.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             btnCancelar.Location = new System.Drawing.Point(638, 176);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new System.Drawing.Size(145, 29);
@@ -219,11 +208,11 @@ namespace Presentacion
             // 
             // btnGuardarDatos
             // 
-            btnGuardarDatos.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
+            btnGuardarDatos.BackColor = System.Drawing.Color.FromArgb(((int)((byte)55)), ((int)((byte)55)), ((int)((byte)60)));
             btnGuardarDatos.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnGuardarDatos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnGuardarDatos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)((byte)60)), ((int)((byte)60)), ((int)((byte)60)));
             btnGuardarDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnGuardarDatos.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            btnGuardarDatos.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             btnGuardarDatos.Location = new System.Drawing.Point(487, 176);
             btnGuardarDatos.Name = "btnGuardarDatos";
             btnGuardarDatos.Size = new System.Drawing.Size(145, 29);
@@ -234,11 +223,11 @@ namespace Presentacion
             // 
             // btnNuevo
             // 
-            btnNuevo.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
+            btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)((byte)55)), ((int)((byte)55)), ((int)((byte)60)));
             btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)((byte)60)), ((int)((byte)60)), ((int)((byte)60)));
             btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnNuevo.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            btnNuevo.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             btnNuevo.Location = new System.Drawing.Point(335, 176);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new System.Drawing.Size(145, 29);
@@ -249,11 +238,11 @@ namespace Presentacion
             // 
             // btnEliminar
             // 
-            btnEliminar.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
+            btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)((byte)55)), ((int)((byte)55)), ((int)((byte)60)));
             btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)((byte)60)), ((int)((byte)60)), ((int)((byte)60)));
             btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnEliminar.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             btnEliminar.Location = new System.Drawing.Point(638, 176);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new System.Drawing.Size(145, 29);
@@ -264,11 +253,11 @@ namespace Presentacion
             // 
             // btnAgregar
             // 
-            btnAgregar.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
+            btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)((byte)55)), ((int)((byte)55)), ((int)((byte)60)));
             btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)((byte)60)), ((int)((byte)60)), ((int)((byte)60)));
             btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnAgregar.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             btnAgregar.Location = new System.Drawing.Point(487, 176);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new System.Drawing.Size(145, 29);
@@ -279,11 +268,11 @@ namespace Presentacion
             // 
             // btnModificar
             // 
-            btnModificar.BackColor = System.Drawing.Color.FromArgb(55, 55, 60);
+            btnModificar.BackColor = System.Drawing.Color.FromArgb(((int)((byte)55)), ((int)((byte)55)), ((int)((byte)60)));
             btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(60, 60, 60);
+            btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)((byte)60)), ((int)((byte)60)), ((int)((byte)60)));
             btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnModificar.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            btnModificar.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             btnModificar.Location = new System.Drawing.Point(487, 176);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new System.Drawing.Size(145, 29);
@@ -294,9 +283,9 @@ namespace Presentacion
             // 
             // txtDireccion
             // 
-            txtDireccion.BackColor = System.Drawing.Color.FromArgb(37, 37, 38);
+            txtDireccion.BackColor = System.Drawing.Color.FromArgb(((int)((byte)37)), ((int)((byte)37)), ((int)((byte)38)));
             txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            txtDireccion.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             txtDireccion.Location = new System.Drawing.Point(581, 109);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new System.Drawing.Size(321, 27);
@@ -304,9 +293,9 @@ namespace Presentacion
             // 
             // txtEmail
             // 
-            txtEmail.BackColor = System.Drawing.Color.FromArgb(37, 37, 38);
+            txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)((byte)37)), ((int)((byte)37)), ((int)((byte)38)));
             txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            txtEmail.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             txtEmail.Location = new System.Drawing.Point(184, 112);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new System.Drawing.Size(306, 27);
@@ -314,9 +303,9 @@ namespace Presentacion
             // 
             // txtTel
             // 
-            txtTel.BackColor = System.Drawing.Color.FromArgb(37, 37, 38);
+            txtTel.BackColor = System.Drawing.Color.FromArgb(((int)((byte)37)), ((int)((byte)37)), ((int)((byte)38)));
             txtTel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            txtTel.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            txtTel.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             txtTel.Location = new System.Drawing.Point(928, 55);
             txtTel.Name = "txtTel";
             txtTel.Size = new System.Drawing.Size(245, 27);
@@ -324,9 +313,9 @@ namespace Presentacion
             // 
             // txtDni
             // 
-            txtDni.BackColor = System.Drawing.Color.FromArgb(37, 37, 38);
+            txtDni.BackColor = System.Drawing.Color.FromArgb(((int)((byte)37)), ((int)((byte)37)), ((int)((byte)38)));
             txtDni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            txtDni.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            txtDni.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             txtDni.Location = new System.Drawing.Point(581, 55);
             txtDni.Name = "txtDni";
             txtDni.Size = new System.Drawing.Size(233, 27);
@@ -334,9 +323,9 @@ namespace Presentacion
             // 
             // txtNombre
             // 
-            txtNombre.BackColor = System.Drawing.Color.FromArgb(37, 37, 38);
+            txtNombre.BackColor = System.Drawing.Color.FromArgb(((int)((byte)37)), ((int)((byte)37)), ((int)((byte)38)));
             txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            txtNombre.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             txtNombre.Location = new System.Drawing.Point(184, 52);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new System.Drawing.Size(306, 27);
@@ -345,7 +334,7 @@ namespace Presentacion
             // label8
             // 
             label8.AutoSize = true;
-            label8.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            label8.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             label8.Location = new System.Drawing.Point(540, 58);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(35, 20);
@@ -355,7 +344,7 @@ namespace Presentacion
             // label7
             // 
             label7.AutoSize = true;
-            label7.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            label7.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             label7.Location = new System.Drawing.Point(505, 112);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(72, 20);
@@ -365,7 +354,7 @@ namespace Presentacion
             // label6
             // 
             label6.AutoSize = true;
-            label6.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            label6.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             label6.Location = new System.Drawing.Point(132, 116);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(46, 20);
@@ -375,7 +364,7 @@ namespace Presentacion
             // label4
             // 
             label4.AutoSize = true;
-            label4.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            label4.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             label4.Location = new System.Drawing.Point(855, 58);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(67, 20);
@@ -385,7 +374,7 @@ namespace Presentacion
             // label3
             // 
             label3.AutoSize = true;
-            label3.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            label3.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             label3.Location = new System.Drawing.Point(44, 55);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(134, 20);
@@ -395,7 +384,7 @@ namespace Presentacion
             // label5
             // 
             label5.AutoSize = true;
-            label5.ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            label5.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             label5.Location = new System.Drawing.Point(44, 123);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(0, 20);
@@ -406,15 +395,14 @@ namespace Presentacion
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             AutoScroll = true;
-            BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            BackColor = System.Drawing.Color.FromArgb(((int)((byte)30)), ((int)((byte)30)), ((int)((byte)30)));
             ClientSize = new System.Drawing.Size(1386, 1047);
             Controls.Add(groupBox1);
-            Controls.Add(btnNuevoCliente);
             Controls.Add(label2);
             Controls.Add(dgvClientes);
             Controls.Add(txtBuscarCliente);
             Controls.Add(label1);
-            ForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            ForeColor = System.Drawing.Color.FromArgb(((int)((byte)240)), ((int)((byte)240)), ((int)((byte)240)));
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Text = "Clientes";
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
@@ -435,7 +423,6 @@ namespace Presentacion
         private TextBox txtBuscarCliente;
         private System.Windows.Forms.DataGridView dgvClientes;
         private Label label2;
-        private Button btnNuevoCliente;
         private System.Windows.Forms.GroupBox groupBox1;
         private Label label5;
         private System.Windows.Forms.Label label3;

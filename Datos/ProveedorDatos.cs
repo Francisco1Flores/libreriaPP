@@ -10,6 +10,21 @@ namespace Datos
     public class ProveedorDatos
     {
         // Método para obtener la lista de proveedores activos desde SQL Server
+        public List<Proveedor> ListarProveedoresActivos()
+        {
+            List<Proveedor> proveedores = ListarProveedores();
+            List<Proveedor> proveedoresActivos = new List<Proveedor>();
+            foreach (var proveedor in proveedores)
+            {
+                if (proveedor.Estado)
+                {
+                    proveedoresActivos.Add(proveedor);
+                }
+            }
+
+            return proveedoresActivos;
+        }
+        
         public List<Proveedor> ListarProveedores()
         {
             List<Proveedor> listaProveedores = new List<Proveedor>();

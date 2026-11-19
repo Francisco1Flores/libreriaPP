@@ -113,7 +113,7 @@ namespace Presentacion
         {
             try
             {
-                List<Proveedor> lista = proveedorNegocio.Listar();
+                List<Proveedor> lista = proveedorNegocio.ListarActivos();
 
                 if (!string.IsNullOrWhiteSpace(filtro))
                 {

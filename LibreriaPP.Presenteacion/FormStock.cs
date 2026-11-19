@@ -75,9 +75,19 @@ namespace Presentacion
 
             dgvStock.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(35, 35, 38);
             dgvStock.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            
+            CargarRubros();
+            CargarProveedores();
         }
 
-   
+        public void CargarRubros()
+        {
+            cmbRubro.DataSource = new RubroNegocio().Listar();
+        }
+        private void CargarProveedores()
+        {
+            cmbProveedor.DataSource = new ProveedorNegocio().ListarActivos();
+        }
 
         private void FormStock_Load_1(object sender, EventArgs e)
         {
@@ -223,6 +233,18 @@ namespace Presentacion
                     MessageBox.Show("Error al eliminar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void btnNuevoRubro_Click(object sender, EventArgs e)
+        {
+            var formNuevoRubro = new FormNuevoRubro(this, null);
+            formNuevoRubro.StartPosition = FormStartPosition.CenterScreen;
+            formNuevoRubro.ShowDialog();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

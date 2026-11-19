@@ -34,27 +34,22 @@ public class VentaDatos
 
     public int ObtenerIdParaNuevaVenta()
     {
-        ConexionDB.EjecutarQuery("INSERT INTO factura(total) VALUES (0.0)");;
-
         int idParaNuevaVenta = -1;
         MySqlConnection conexion = ConexionDB.ObtenerConexion();
         conexion.Open();
 
-        MySqlTransaction transaction = conexion.BeginTransaction();
-        
         string consulta1 = "INSERT INTO factura(total) VALUES (0.0)";
-        MySqlCommand cmd = new MySqlCommand(consulta1, conexion);
-        cmd.ExecuteNonQuery();
+        MySqlCommand cmd1 = new MySqlCommand(consulta1, conexion);
+        cmd1.ExecuteNonQuery();
         
         string consulta2 = $"SELECT LAST_INSERT_ID() AS ultimoId";
-        cmd = new MySqlCommand(consulta2, conexion);
-        MySqlDataReader lector = cmd.ExecuteReader();
+        MySqlCommand cmd2 = new MySqlCommand(consulta2, conexion);
+        MySqlDataReader lector = cmd2.ExecuteReader();
         if (lector.Read())
         {
             idParaNuevaVenta = lector.GetInt32("ultimoId");
         }
         lector.Close();
-        transaction.Commit();
         conexion.Close();
         return idParaNuevaVenta ;
     }
@@ -72,7 +67,8 @@ public class VentaDatos
     {
         MySqlConnection conexion = ConexionDB.ObtenerConexion();
         conexion.Open();
-        string consulta = $"SELECT * FROM factura;";
+        
+        string consulta = $"SELECT * FROM factura f WHERE f.id = {id};";
         MySqlCommand cmd = new MySqlCommand(consulta, conexion);
         MySqlDataReader lector = cmd.ExecuteReader();
         

@@ -41,7 +41,7 @@ namespace Presentacion
 
         private void CargarProveedores()
         {
-            cmbProveedor.DataSource = new ProveedorNegocio().Listar();
+            cmbProveedor.DataSource = new ProveedorNegocio().ListarActivos();
             cmbProveedor.DisplayMember = "RazonSocial";
             cmbProveedor.ValueMember = "IdProveedor";
             cmbProveedor.SelectedIndex = -1;
@@ -49,6 +49,7 @@ namespace Presentacion
 
         private void CargarFormasPago()
         {
+            /*
             DataTable dtFormasPago = new DataTable();
             dtFormasPago.Columns.Add("IdFormaPago", typeof(int));
             dtFormasPago.Columns.Add("Descripcion", typeof(string));
@@ -56,10 +57,11 @@ namespace Presentacion
             dtFormasPago.Rows.Add(1, "Efectivo");
             dtFormasPago.Rows.Add(2, "Transferencia");
             dtFormasPago.Rows.Add(3, "Cuenta Corriente");
+            */
 
-            cmbFormaPago.DataSource = dtFormasPago;
-            cmbFormaPago.DisplayMember = "Descripcion";
-            cmbFormaPago.ValueMember = "IdFormaPago";
+            cmbFormaPago.DataSource = new FormaPagoNegocio().Listar();
+            cmbFormaPago.DisplayMember = "Metodo";
+            cmbFormaPago.ValueMember = "Id";
             cmbFormaPago.SelectedIndex = -1;
         }
 
@@ -149,7 +151,13 @@ namespace Presentacion
             if (resultado)
             {
                 MessageBox.Show("¡Compra registrada exitosamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                cmbProveedor.SelectedIndex = -1;
+                cmbFormaPago.SelectedIndex = -1;
+                cmbProducto.SelectedIndex = -1;
+                txtCantidad.Clear();
+                txtPrecio.Clear();
+                listaDetalleTemporal.Clear();
+                RefrescarGrillaDetalle();
             }
             else
             {

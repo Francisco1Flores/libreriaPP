@@ -17,11 +17,10 @@ public class ProductoDatos_
                           "p.codigoBarra AS 'codigoBarra'," +
                           "p.nombre AS 'nombre'," +
                           "p.precioVenta AS 'precioVenta'," +
-                          "s.cantidad AS 'stock'," + 
-                          "r.nombre AS 'rubro' " + 
+                          "p.precioLista AS 'precioLista'," +
+                          "s.cantidad AS 'stock'" +
                           "FROM Producto p " +
-                          "INNER JOIN Stock s ON p.id = s.idProducto " +
-                          "INNER JOIN Rubro r ON p.idRubro = r.id";
+                          "INNER JOIN Stock s ON p.id = s.idProducto;";
         
         MySqlCommand cmd = new MySqlCommand(consulta, conexion);
 
@@ -33,7 +32,7 @@ public class ProductoDatos_
             producto.Nombre      = lector.GetString("nombre");
             producto.CodigoBarra = lector.GetString("codigoBarra");
             producto.PrecioVenta = lector.GetDouble("precioVenta");
-            producto.Rubro       = lector.GetString("rubro");
+            producto.PrecioLista = lector.GetDouble("precioLista");
             producto.Stock       = lector.GetInt32("stock");
 
             productos.Add(producto);
@@ -52,11 +51,9 @@ public class ProductoDatos_
                           "p.codigoBarra AS 'codigoBarra'," +
                           "p.nombre AS 'nombre'," +
                           "p.precioVenta AS 'precioVenta'," +
-                          "s.cantidad AS 'stock'," + 
-                          "r.nombre AS 'rubro' " + 
+                          "s.cantidad AS 'stock' " + 
                           "FROM Producto p " +
                           "INNER JOIN Stock s ON p.id = s.idProducto " +
-                          "INNER JOIN Rubro r ON p.idRubro = r.id "+
                           $"WHERE p.codigoBarra = '{codigo}'";
                           ;
         MySqlCommand cmd = new MySqlCommand(consulta, conexion);
@@ -71,7 +68,6 @@ public class ProductoDatos_
             producto.Nombre      = lector.GetString("nombre");
             producto.CodigoBarra = lector.GetString("codigoBarra");
             producto.PrecioVenta = lector.GetDouble("precioVenta");
-            producto.Rubro       = lector.GetString("rubro");
             producto.Stock       = lector.GetInt32("stock");
         }
         return producto;

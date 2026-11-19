@@ -32,7 +32,7 @@ partial class FormBuscarProducto
     private void InitializeComponent()
     {
         dgvProductos = new System.Windows.Forms.DataGridView();
-        textBox1 = new System.Windows.Forms.TextBox();
+        txtBuscarProducto = new System.Windows.Forms.TextBox();
         btnSeleccionar = new System.Windows.Forms.Button();
         btnCancelar = new System.Windows.Forms.Button();
         label1 = new System.Windows.Forms.Label();
@@ -50,24 +50,25 @@ partial class FormBuscarProducto
         // dgvProductos
         // 
         dgvProductos.ColumnHeadersHeight = 29;
-        dgvProductos.Location = new System.Drawing.Point(102, 125);
+        dgvProductos.Location = new System.Drawing.Point(79, 125);
         dgvProductos.Name = "dgvProductos";
         dgvProductos.RowHeadersWidth = 51;
-        dgvProductos.Size = new System.Drawing.Size(565, 194);
+        dgvProductos.Size = new System.Drawing.Size(808, 194);
         dgvProductos.TabIndex = 0;
         dgvProductos.CellClick += dataGridView1_CellClick;
         // 
-        // textBox1
+        // txtBuscarProducto
         // 
-        textBox1.Location = new System.Drawing.Point(102, 75);
-        textBox1.Name = "textBox1";
-        textBox1.Size = new System.Drawing.Size(391, 27);
-        textBox1.TabIndex = 1;
+        txtBuscarProducto.Location = new System.Drawing.Point(79, 75);
+        txtBuscarProducto.Name = "txtBuscarProducto";
+        txtBuscarProducto.Size = new System.Drawing.Size(391, 27);
+        txtBuscarProducto.TabIndex = 1;
+        txtBuscarProducto.TextChanged += textBox1_TextChanged;
         // 
         // btnSeleccionar
         // 
         btnSeleccionar.Cursor = System.Windows.Forms.Cursors.Hand;
-        btnSeleccionar.Location = new System.Drawing.Point(312, 479);
+        btnSeleccionar.Location = new System.Drawing.Point(351, 479);
         btnSeleccionar.Name = "btnSeleccionar";
         btnSeleccionar.Size = new System.Drawing.Size(102, 35);
         btnSeleccionar.TabIndex = 2;
@@ -78,7 +79,7 @@ partial class FormBuscarProducto
         // btnCancelar
         // 
         btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-        btnCancelar.Location = new System.Drawing.Point(497, 479);
+        btnCancelar.Location = new System.Drawing.Point(535, 479);
         btnCancelar.Name = "btnCancelar";
         btnCancelar.Size = new System.Drawing.Size(75, 35);
         btnCancelar.TabIndex = 3;
@@ -88,7 +89,7 @@ partial class FormBuscarProducto
         // 
         // label1
         // 
-        label1.Location = new System.Drawing.Point(102, 49);
+        label1.Location = new System.Drawing.Point(79, 49);
         label1.Name = "label1";
         label1.Size = new System.Drawing.Size(269, 23);
         label1.TabIndex = 4;
@@ -97,7 +98,7 @@ partial class FormBuscarProducto
         // txtCodigoBarras
         // 
         txtCodigoBarras.Enabled = false;
-        txtCodigoBarras.Location = new System.Drawing.Point(102, 408);
+        txtCodigoBarras.Location = new System.Drawing.Point(102, 361);
         txtCodigoBarras.Name = "txtCodigoBarras";
         txtCodigoBarras.Size = new System.Drawing.Size(234, 27);
         txtCodigoBarras.TabIndex = 5;
@@ -105,7 +106,7 @@ partial class FormBuscarProducto
         // txtNombre
         // 
         txtNombre.Enabled = false;
-        txtNombre.Location = new System.Drawing.Point(342, 408);
+        txtNombre.Location = new System.Drawing.Point(342, 361);
         txtNombre.Name = "txtNombre";
         txtNombre.Size = new System.Drawing.Size(253, 27);
         txtNombre.TabIndex = 6;
@@ -113,7 +114,7 @@ partial class FormBuscarProducto
         // txtPrecio
         // 
         txtPrecio.Enabled = false;
-        txtPrecio.Location = new System.Drawing.Point(601, 408);
+        txtPrecio.Location = new System.Drawing.Point(601, 361);
         txtPrecio.Name = "txtPrecio";
         txtPrecio.Size = new System.Drawing.Size(143, 27);
         txtPrecio.TabIndex = 7;
@@ -121,14 +122,14 @@ partial class FormBuscarProducto
         // txtStock
         // 
         txtStock.Enabled = false;
-        txtStock.Location = new System.Drawing.Point(750, 408);
+        txtStock.Location = new System.Drawing.Point(750, 361);
         txtStock.Name = "txtStock";
         txtStock.Size = new System.Drawing.Size(100, 27);
         txtStock.TabIndex = 8;
         // 
         // label2
         // 
-        label2.Location = new System.Drawing.Point(105, 384);
+        label2.Location = new System.Drawing.Point(102, 335);
         label2.Name = "label2";
         label2.Size = new System.Drawing.Size(100, 23);
         label2.TabIndex = 9;
@@ -136,7 +137,7 @@ partial class FormBuscarProducto
         // 
         // label3
         // 
-        label3.Location = new System.Drawing.Point(342, 384);
+        label3.Location = new System.Drawing.Point(342, 335);
         label3.Name = "label3";
         label3.Size = new System.Drawing.Size(100, 23);
         label3.TabIndex = 10;
@@ -144,7 +145,7 @@ partial class FormBuscarProducto
         // 
         // label4
         // 
-        label4.Location = new System.Drawing.Point(601, 382);
+        label4.Location = new System.Drawing.Point(601, 335);
         label4.Name = "label4";
         label4.Size = new System.Drawing.Size(100, 23);
         label4.TabIndex = 11;
@@ -152,7 +153,7 @@ partial class FormBuscarProducto
         // 
         // label5
         // 
-        label5.Location = new System.Drawing.Point(750, 382);
+        label5.Location = new System.Drawing.Point(750, 335);
         label5.Name = "label5";
         label5.Size = new System.Drawing.Size(100, 23);
         label5.TabIndex = 12;
@@ -174,7 +175,7 @@ partial class FormBuscarProducto
         Controls.Add(label1);
         Controls.Add(btnCancelar);
         Controls.Add(btnSeleccionar);
-        Controls.Add(textBox1);
+        Controls.Add(txtBuscarProducto);
         Controls.Add(dgvProductos);
         MaximizeBox = false;
         MinimizeBox = false;
@@ -196,7 +197,7 @@ partial class FormBuscarProducto
     private System.Windows.Forms.Label label1;
 
     private System.Windows.Forms.DataGridView dgvProductos;
-    private System.Windows.Forms.TextBox textBox1;
+    private System.Windows.Forms.TextBox txtBuscarProducto;
     private System.Windows.Forms.Button btnSeleccionar;
     private System.Windows.Forms.Button btnCancelar;
 

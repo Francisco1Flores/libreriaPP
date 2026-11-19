@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Negocio;
+using Negocio.Negocio;
 
 namespace Presentacion;
 
@@ -7,22 +8,25 @@ public partial class FormBuscarProducto : Form
 {
     private FormVentas formVentasPadre;
     private Producto_ productoSeleccionado;
+    private List<Producto_> productos;
     
     public FormBuscarProducto(FormVentas formVentas)
     {
         InitializeComponent();
         formVentasPadre = formVentas;
+        dgvProductos.AllowUserToAddRows = false;
         CargarProductos();
     }
 
     private void CargarProductos()
     {
-        dgvProductos.DataSource = new ProductoNegocio_().Listar();
+        productos = new ProductoNegocio_().Listar();
+        dgvProductos.DataSource = productos;
     }
 
     private void btnSeleccionar_Click(object sender, EventArgs e)
     {
-        formVentasPadre.EstablecerProductoSeleccionado(productoSeleccionado);
+        formVentasPadre.EstablecerProductoSeleccionado(productoSeleccionado.toProducto());
         this.Close();
     }
 
@@ -67,5 +71,28 @@ public partial class FormBuscarProducto : Form
     private void btnCancelar_Click(object sender, EventArgs e)
     {
         this.Close();
+    }
+
+    private void textBox1_TextChanged(object sender, EventArgs e)
+    {
+        string texto = txtBuscarProducto.Text;
+        List<Producto_> encontrados = new List<Producto_>();
+        if (texto.Length == 0 || texto.Equals(""))
+        {
+            dgvProductos.DataSource = productos;
+        }
+        else
+        {
+            foreach (Producto_ producto in productos)
+            {
+                if (producto.Nombre.Contains(texto) ||
+                    producto.Nombre.ToUpper().Contains(texto.ToUpper()) ||
+                    producto.CodigoBarra.Contains(texto))
+                {
+                    encontrados.Add(producto);
+                }
+            }
+            dgvProductos.DataSource = encontrados;
+        }
     }
 }

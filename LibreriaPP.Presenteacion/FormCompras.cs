@@ -33,7 +33,7 @@ namespace Presentacion
             {
                 ProveedorNegocio objNegocio = new ProveedorNegocio();
                 // Usamos .Listar() que es como lo tienes definido en tu capa de Negocio
-                dgvProveedores.DataSource = objNegocio.Listar();
+                dgvProveedores.DataSource = objNegocio.ListarActivos();
             }
             catch (Exception ex)
             {
